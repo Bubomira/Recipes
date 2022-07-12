@@ -6,6 +6,17 @@ const User = require('../models/User')
 const JWT_SECRET = 'jdekjfdedledmw;;s,dxkle'
 
 module.exports.loginUser = async(userInfo)=>{
+    const {username,password} =userInfo;
+    const user = await User.findOne({username:username});
+    if(!user){
+        throw new Error('Incorrect username or password')
+    }
+    const areMatching = await bcrypt.compare(password,user.password);
+    if(!areMatching){
+        throw new Error('Incorrect username or password')
+    }
+
+    return generateToken(user)
 
 
 }

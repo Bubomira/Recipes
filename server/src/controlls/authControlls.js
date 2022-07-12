@@ -2,10 +2,9 @@ const authRouter = require('express').Router();
 
 const{loginUser,logoutUser,registerUser} = require('../services/authServices')
 
-authRouter.post('/login',(req,res)=>{
+authRouter.post('/login',async(req,res)=>{
   try{
-    const token = loginUser(req.body);
-    console.log(token)
+    const token = await loginUser(req.body);
 
   }catch(err){
 
@@ -13,11 +12,12 @@ authRouter.post('/login',(req,res)=>{
    
 })
 
-authRouter.post('/register',(req,res)=>{
+authRouter.post('/register',async(req,res)=>{
     try{
-    const token = registerUser(req.body)
+    const token =await registerUser(req.body)
+    res.status(201).json(token)
     }catch(err){
-
+     res.status(400).json({message:err.message})
     }
    
 })
