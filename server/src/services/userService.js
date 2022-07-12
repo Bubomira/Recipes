@@ -1,11 +1,11 @@
 const User = require('../models/User')
 
 module.exports.findUser= async(id)=>{
-    return User.findById(id);
+    return User.findById(id).populate('likedRecipies');
 }
 
 module.exports.addRecipeToLiked = async(id,recipe)=>{
-    const user = await this.findUser(id);
+    const user = await User.findById(id);
     if(user.likedRecipies.includes(recipe._id)){
        throw new Error( 'You have alreadly liked this recepie!')
     }
@@ -14,7 +14,7 @@ module.exports.addRecipeToLiked = async(id,recipe)=>{
 }
 
 module.exports.removeRecipeFromLiked = async(id,recipe)=>{
-    const user = await this.findUser(id);
+    const user = await User.findById(id);
     if(!user.likedRecipies.includes(recipe._id)){
         throw new Error(  'You cant dislike a recipe u havent liked!')
     }
