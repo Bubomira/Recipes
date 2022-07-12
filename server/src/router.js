@@ -1,9 +1,15 @@
 const router = require('express').Router();
 
-const authRouter = require('./controlls/authControlls');
+const userRouter = require('./controlls/userControlls');
 const recipeRouter = require('./controlls/recipeControlls');
 
-router.use('/user',authRouter)
+const {getFirstThreeRecipies} = require('./services/recipeServices')
+
+router.get('/',async(req,res)=>{
+   res.json(await getFirstThreeRecipies)
+})
+
+router.use('/user',userRouter)
 router.use('/recipe',recipeRouter)
 
 module.exports  =router;

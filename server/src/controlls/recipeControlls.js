@@ -10,6 +10,10 @@ recipeRouter.get('/catalog',async(req,res)=>{
    
 })
 
+recipeRouter.post('/catalog/search',async (req,res)=>{
+   res.json( await getAllRecipes(req.body))
+})
+
 recipeRouter.get('/details/:recipeId',async(req,res)=>{
     try{
         const recipe = await getRecipe(req.params.recipeId)

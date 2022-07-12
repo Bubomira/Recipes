@@ -5,7 +5,11 @@ module.exports.getFirstThreeRecipies = async()=>{
 }
 
 module.exports.getAllRecipes = async(filter)=>{
-    return Recipe.find({}).filter(x=>x.title.toLowerCase().startsWith(filter.toLowerCase()))
+    let recipes = await Recipe.find({})
+    if(filter){
+        recipes = recipes.filter(x=>x.title.toLowerCase().startsWith(filter.name.toLowerCase()))
+    }
+    return recipes;
 }
 
 module.exports.createRecipe = async(data,id)=>{

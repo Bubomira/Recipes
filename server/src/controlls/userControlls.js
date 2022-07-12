@@ -1,8 +1,9 @@
-const authRouter = require('express').Router();
+const userRouter = require('express').Router();
 
 const{loginUser,logoutUser,registerUser} = require('../services/authServices');
+const {findUser} = require('../services/userService')
 
-authRouter.post('/login',async(req,res)=>{
+userRouter.post('/login',async(req,res)=>{
   try{
     const token = await loginUser(req.body);
     res.json(token);
@@ -12,7 +13,7 @@ authRouter.post('/login',async(req,res)=>{
    
 })
 
-authRouter.post('/register',async(req,res)=>{
+userRouter.post('/register',async(req,res)=>{
     try{
     const token =await registerUser(req.body)
     res.status(201).json(token)
@@ -22,9 +23,13 @@ authRouter.post('/register',async(req,res)=>{
    
 })
 
-authRouter.get('/logout',(req,res)=>{
+userRouter.get('/logout',(req,res)=>{
    logoutUser(req.user.token);
    res.status(204).end()
 })
 
-module.exports = authRouter;
+userRouter.get('/profile',async(req,res)=>{
+   res.json(await findUser(req.user._id))
+})
+
+module.exports = userRouter;
