@@ -1,6 +1,6 @@
 const authRouter = require('express').Router();
 
-const{loginUser,logoutUser,registerUser} = require('../services/authServices')
+const{loginUser,logoutUser,registerUser} = require('../services/authServices');
 
 authRouter.post('/login',async(req,res)=>{
   try{
@@ -8,7 +8,6 @@ authRouter.post('/login',async(req,res)=>{
     res.json(token);
   }catch(err){
     res.status(400).json({message:err.message})
-
   }
    
 })
@@ -23,8 +22,9 @@ authRouter.post('/register',async(req,res)=>{
    
 })
 
-authRouter.post('/logout',(req,res)=>{
-   
+authRouter.get('/logout',(req,res)=>{
+   logoutUser(req.user.token);
+   res.status(204).end()
 })
 
 module.exports = authRouter;

@@ -4,6 +4,7 @@ const bcrypt = require('bcrypt');
 const User = require('../models/User')
 
 const JWT_SECRET = 'jdekjfdedledmw;;s,dxkle'
+const blackList = new Set();
 
 module.exports.loginUser = async(userInfo)=>{
     const {username,password} =userInfo;
@@ -17,8 +18,6 @@ module.exports.loginUser = async(userInfo)=>{
     }
 
     return generateToken(user)
-
-
 }
 
 module.exports.registerUser = async(userInfo)=>{
@@ -42,13 +41,27 @@ module.exports.registerUser = async(userInfo)=>{
    return generateToken(user)
 }
 
-module.exports.logoutUser = async()=>{
+module.exports.logoutUser = (token)=>{
+    blackList.add(token)
+}
 
+module.exports.verifyToken = async(token)=>{
+    if(blackList.has(token)){
+        throw new Error('Token is blacklisted')
+    }
+    return new Promise((resolve,reject)=>{
+        jwt.verify(token,JWT_SECRET,(err,decodedToken)=>{
+            if(err){
+                reject(err)
+            }
+            resolve(decodedToken)
+        })
+    })
 }
 
 function generateToken(user) {
     let result =  new Promise((resolve,reject)=>{
-        jwt.sign({_id:user._id,username:user.username,email:user.email},JWT_SECRET,(err,token)=>{
+        jwt.sign({_id:user._id,username:user.username,email:user.email},JWT_SECRET,{expiresIn:'2d'},(err,token)=>{
             if(err){
                 reject(err);
             }
@@ -56,4 +69,8 @@ function generateToken(user) {
         })
     })
     return result;
+}
+
+module.exports.findUser= async(id)=>{
+    return User.findById(id);
 }
