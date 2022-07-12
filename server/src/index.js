@@ -1,7 +1,10 @@
 const express = require('express');
 const mongoose = require('mongoose')
 
+const router = require('./router')
+
 const app = express();
+
 
 const start = async()=>{
     try{
@@ -12,5 +15,7 @@ const start = async()=>{
     }
 }
 start();
+
+app.use(router)
 
 app.listen('3030',()=>console.log('App is listening on port 3030...'))
