@@ -5,8 +5,9 @@ const{loginUser,logoutUser,registerUser} = require('../services/authServices')
 authRouter.post('/login',async(req,res)=>{
   try{
     const token = await loginUser(req.body);
-
+    res.json(token);
   }catch(err){
+    res.status(400).json({message:err.message})
 
   }
    

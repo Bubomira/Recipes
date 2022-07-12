@@ -23,8 +23,11 @@ module.exports.loginUser = async(userInfo)=>{
 
 module.exports.registerUser = async(userInfo)=>{
     const{username,email,password,rePass} = userInfo;
-    if(password.lenght<5){
-        throw new Error('Password should be more than 5 characters')
+    if(await User.findOne({username:username})){
+        throw new Error(`the username ${username} is already taken!`)
+    }
+    if(password.length<5){
+        throw new Error('Password should be more than 5 characters!')
     }
     if(password!=rePass){
         throw new Error('Passwords must match!')
