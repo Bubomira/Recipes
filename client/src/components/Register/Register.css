@@ -1,0 +1,61 @@
+.wrapper{
+  background-color: #cbceee;
+  }
+   
+  .registration-form{
+  padding: 50px 0;
+  }
+  
+  .registration-form form{
+    background-color: #fff;
+    max-width: 600px;
+    margin: auto;
+    padding: 50px 70px;
+    border-top-left-radius: 30px;
+    border-top-right-radius: 30px;
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+  }
+  
+ h1{
+  text-align: center;
+   
+    border-radius: 15px;
+    font-size: 45px;
+    color: #7e86d6;
+    width: 200px;
+    height: 80px;
+    margin: auto;
+    margin-bottom: 50px;
+    line-height: 100px;
+  }
+  
+  .registration-form .item{
+  border-radius: 20px;
+    margin-bottom: 25px;
+    padding: 10px 20px;
+  }
+  
+  .registration-form .create-account{
+    margin-left:175px;
+    border-radius: 30px;
+    padding: 10px 20px;
+    font-size: 18px;
+    font-weight: bold;
+    background-color:#7e86d6;
+    border: none;
+    color: white;
+    margin-top: 20px;
+  }
+  
+p{
+  
+    border-radius: 15px;
+    font-size: 16px;
+    color: #7e86d6;
+    margin: auto;
+    line-height: 50px;
+
+}
+a{
+  color: #7e86d6;
+}

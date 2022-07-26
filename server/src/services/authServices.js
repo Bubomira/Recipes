@@ -70,7 +70,3 @@ function generateToken(user) {
     })
     return result;
 }
-
-module.exports.findUser= async(id)=>{
-    return User.findById(id);
-}

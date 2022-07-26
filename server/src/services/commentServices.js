@@ -5,5 +5,4 @@ module.exports.createComment =async(data,ownerId)=>{
         content:data.content,
         ownerId:ownerId
     })
-    
 }
