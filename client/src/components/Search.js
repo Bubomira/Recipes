@@ -7,7 +7,7 @@ export default function Search(){
           </span>
           <div className="search-bar">
             <div className="search-bar-tablecell">
-              <h3>Search For:</h3>
+              <h3>Seach For:</h3>
               <input type="text" placeholder="Keywords" />
               <button type="submit">
                 Search <i className="fas fa-search" />

@@ -1,0 +1,141 @@
+body {
+    background-color: #dee2e6;
+}
+
+.clean-block {
+    margin-top: 125px;
+    margin-left: 200px;
+    margin-right: 200px;
+    margin-bottom: 125px;
+    padding-bottom: 30px;
+    background-color:white;
+}
+
+.clean-info h3 {
+    margin-top: .8em;
+    margin-bottom: .6em;
+   margin-left: 120px;
+}
+
+.clean-block.dark {
+    background-color: #f6f6f6
+}
+
+.clean-block.dark .block-heading p {
+    opacity: .8
+}
+
+.container {
+    width: 100%;
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto
+}
+
+.block-heading {
+    padding-top: 50px;
+    margin-bottom: 40px;
+    text-align: center
+}
+
+p {
+    max-width: 420px;
+    margin: auto;
+}
+
+.align-items-center {
+    -ms-flex-align: center !important;
+    align-items: center !important
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px
+}
+
+.col-md-6 {
+    -ms-flex: 0 0 50%;
+    flex: 0 0 50%;
+    max-width: 50%;
+    position: relative;
+    width: 100%;
+    min-height: 1px;
+    padding-right: 15px;
+    padding-left: 15px
+}
+
+.img-thumbnail {
+    max-width: 100%;
+    margin-top:50px;
+    margin-left:10px;
+    padding: .25rem;
+    background-color: #fff;
+    border: 1px solid #dee2e6;
+    border-radius: .25rem;
+    position: -ms-page;
+}
+
+.btn-edit {
+    color: white;
+    background-color: #eccb35;
+    background-image: none;
+    border-color: #dfc035;
+    margin-left: 87px;
+}
+
+.btn-delete {
+    color: white;
+    background-color: #a52913;
+    background-image: none;
+    border-color: #aa3b27;
+    margin-left: 40px;
+    margin-right: 60px;
+    margin-top: 20px;
+}
+
+.btn-lg {
+    padding: .5rem 1rem;
+    font-size: 1.25rem;
+    line-height: 1.5;
+    border-radius: .5rem
+}
+
+.getting-started-info p {
+    color:#000000;
+    text-align: left;
+        padding : 0;
+        margin : 0;   
+        line-height: 1; 
+}
+p.recipe-description{
+    width: 100%;
+    padding-left: 15px;
+    padding-right:15px;
+    display: flex;
+    margin-right: -15px;
+    margin-left: -15px;
+    margin-top:20px;
+    color:black;
+    line-height: 1.25;
+}
+.likes{
+    color:black;
+    text-align: left;
+    font-size: 22px;
+    font-weight: 300;
+}
+
+.btn-like-dislike{
+    margin-left: 70px;
+    margin-right: 10px;
+    margin-top: 20px;
+   background-color:#76a5af;
+   color:white;
+   border-color:#45818e;
+
+}
