@@ -14,6 +14,9 @@ export default function Navigation() {
                     <Link className="nav-link active"  to="/login">
                         Login
                     </Link>
+                    <Link className="nav-link active"  to="/recipeCatalog">
+                        Catalog
+                    </Link>
                 </div>
             </div>
         </nav>
