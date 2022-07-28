@@ -17,6 +17,9 @@ export default function Navigation() {
                     <Link className="nav-link active"  to="/recipeCatalog">
                         Catalog
                     </Link>
+                    <Link className="nav-link active"  to="/createRecipe">
+                        Create Recipe
+                    </Link>
                 </div>
             </div>
         </nav>

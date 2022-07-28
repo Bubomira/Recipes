@@ -5,6 +5,7 @@ import RecipeCard from './recipe-card/RecipeCard'
 export default function RecipeList(){
     return(
         <div className="container">
+        
   <div className="row">
     <RecipeCard recipe={{title:'cupcake' ,imageUrl:'https://th.bing.com/th/id/OIP.7Vevs1uLCTIeuQtCicWz7gHaEo?pid=ImgDet&rs=1', _id:1}}/>
     <RecipeCard recipe={{title:'cupcake' ,imageUrl:'https://www.primrose-bakery.co.uk/shop/content/images/thumbs/0001934_eton-mess-cupcake.jpeg', _id:1}}/>
