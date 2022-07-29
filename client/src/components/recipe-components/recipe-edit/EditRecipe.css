@@ -1,0 +1,58 @@
+.wrapper{
+    background-color: #cbceee;
+}
+     
+.edit-form{
+    padding: 50px 0;
+}
+    
+.edit-form form{
+      background-color: #fff;
+      max-width: 600px;
+      margin: auto;
+      padding: 50px 70px;
+      border-top-left-radius: 30px;
+      border-top-right-radius: 30px;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+    
+h1{
+    text-align: center;   
+      border-radius: 15px;
+      font-size: 33px;
+      color: #7e86d6;
+      width: 200px;
+      height: 80px;
+      margin: auto;
+      margin-bottom: 50px;
+      line-height: 100px;
+    }
+    
+    .edit-form .item{
+    border-radius: 20px;
+      margin-bottom: 25px;
+      padding: 10px 20px;
+    }
+    
+    .edit-recipe{
+      margin-left:175px;
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color:#7e86d6;
+      border: none;
+      color: white;
+      margin-top: 20px;
+      margin-left:130px;
+    }
+.radioElement{
+    margin-right:40px;
+    margin-left: 5px;
+}
+label{
+   margin-left:10px;
+   font-size:17px;
+   color: #7e86d6;
+   font-weight:500;
+}
