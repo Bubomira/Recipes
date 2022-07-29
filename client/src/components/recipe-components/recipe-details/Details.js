@@ -1,4 +1,4 @@
-import RecipeCommentsForm from './recipe-comments/recipe-comments-form/RecipeCommentsForm'
+import RecipeComments from './recipe-comments/RecipeComments'
 
 import './Details.css'
 export default function Details() {
