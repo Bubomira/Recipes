@@ -2,10 +2,10 @@ import RecipeCommentsForm from './recipe-comments-form/RecipeCommentsForm'
 import RecipeCommentsSection from './recipe-comments-section/RecipeCommentsSection'
 
 export default function RecipeComments(){
-    {/*Logged in user but now owner can post comments */}
+    {/*Logged in user but now owner can post comments  <RecipeCommentsForm/>*/}
     return(
     <>
-    <RecipeCommentsForm/>
+   <RecipeCommentsForm/>
     <RecipeCommentsSection/>
     </>
     )
