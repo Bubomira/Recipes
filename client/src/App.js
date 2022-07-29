@@ -1,8 +1,8 @@
 
 import {Routes, Route} from 'react-router-dom'
 
-import Register from './components/register/Register'
-import Login from './components/login/Login'
+import Register from './components/auth-components/register/Register'
+import Login from './components/auth-components/login/Login'
 import Navigation from './components/Navigation'
 import Details from './components/recipe-components/recipe-details/Details'
 import RecipeList from './components/recipe-components/recipe-list/RecipeList'
