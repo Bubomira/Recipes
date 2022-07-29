@@ -1,0 +1,43 @@
+  
+.add-comment-form{
+    padding: 50px 0;
+}
+    
+.add-comment-form form{
+      background-color: #fff;
+      max-width: 950px;
+      margin: auto;
+      margin-top:-35px;
+      padding: 50px 70px;
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
+}
+    
+.comment-form-heading{
+    text-align: center;   
+      border-radius: 15px;
+      font-size: 33px;
+      color: #7e86d6;
+      width: 700px;
+      height: 90px;
+      margin: auto;
+      margin-bottom: 10px;
+      line-height: 50px;
+    }
+    
+    .add-comment-form .item{
+    border-radius: 20px;
+      margin-bottom: 25px;
+      padding: 10px 20px;
+    }
+    
+    .add-comment{
+      border-radius: 30px;
+      padding: 10px 20px;
+      font-size: 18px;
+      font-weight: bold;
+      background-color:#7e86d6;
+      border: none;
+      color: white;
+      margin-top: 20px;
+      margin-left:340px;
+    }

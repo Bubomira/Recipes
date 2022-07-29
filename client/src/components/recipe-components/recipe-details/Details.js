@@ -1,6 +1,9 @@
+import RecipeCommentsForm from './recipe-comments/recipe-comments-form/RecipeCommentsForm'
+
 import './Details.css'
 export default function Details() {
   return (
+    <>
     <section className="clean-block clean-info">
       <div className="container">
       
@@ -27,13 +30,17 @@ export default function Details() {
                 Delete
               </button>
               */ }
-            {/*Logged-in user but not owner
+           {/*Logged-in user but not owner
                <button className="btn-like-dislike btn-lg">Like</button> 
                <button className="btn-like-dislike btn-lg">Disllike</button> 
                */}
           </div>
         </div>
-      </div>
+      </div>       
     </section>
+    {/*Logged in user but not owner can add comments */}
+    <RecipeCommentsForm/>
+    </>
+  
   )
 }
