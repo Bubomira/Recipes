@@ -10,7 +10,7 @@ export default function CreateRecipe(){
               <input
                 type="text"
                 className="form-control item"
-                placeholder="Recipe title"
+                placeholder="Title"
                 name="title"
               />
             </div>
