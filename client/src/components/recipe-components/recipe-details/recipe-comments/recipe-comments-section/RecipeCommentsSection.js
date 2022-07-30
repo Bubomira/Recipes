@@ -1,37 +1,15 @@
+import Comment from './comment/Comment'
 import './RecipeCommentsSection.css'
+
 
 export default function RecipeCommentsSection(){
     return (
         <section className="clean-block features">
           <div className="row justify-content-center">
             <h3 className="comments-title">Comments:</h3>
-            <div className="col-md-5 feature-box">           
-              <p>
-                Lorem ipsum dolor sit amet
-              </p>
+            {/*Comments stay here, if none: no-comments-message */}
             </div>
-            <div className="col-md-5 feature-box">            
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
-                urna, dignissim nec auctor in, mattis vitae leo.
-              </p>
-            </div>
-            <div className="col-md-5 feature-box">
-            
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
-                urna, dignissim nec auctor in, mattis vitae leo.
-              </p>
-            </div>
-            <div className="col-md-5 feature-box">
-            
-              <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc quam
-                urna, dignissim nec auctor in, mattis vitae leo.
-              </p>
-            </div>
-          </div>
-        
+          {/* <h3 className="no-comments-message">This post doesnt have any comments</h3> */}        
       </section>
       
     )

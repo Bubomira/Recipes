@@ -35,11 +35,6 @@
     max-width: 41.66667%
 }
 
-.features h4 {
-    text-align: center;
-    font-size: 18px;
-    padding: 5px
-}
 .comments-title {
     color:white;
     text-align: left;
@@ -51,12 +46,8 @@
     max-width:950px;
     background-color:#a2c4c9 ;
 }
-.col-md-5 p { 
-    text-align:left;
-    background-color: #d0e0e3;
-    line-height:2;
-    max-width: 90%;
-    padding-bottom:20px;
-   margin-bottom:20px;
-   padding-left:20px;
+.no-comments-message{
+    color:#76a5af;
+    text-align:center;
+    padding-top:40px;
 }

@@ -9,7 +9,7 @@ export default function Details() {
       
         <div className="row align-items-center">
           <div className="col-md-6">
-            <img className="img-thumbnail" src="https://th.bing.com/th/id/OIP.IQ7ExAJHUzlPr9oszyl8FQHaEo?pid=ImgDet&rs=1" />
+            <img className="img-thumbnail" src="https://i0.wp.com/ichef.bbci.co.uk/food/ic/food_16x9_506/recipes/cupcakes_93722_16x9.jpg" />
             <p className="likes">Likes:2</p>
           </div>
           <div className="col-md-6">
@@ -38,8 +38,8 @@ export default function Details() {
         </div>
       </div>       
     </section>
-    {/*Logged in user but not owner can add comments */}
-    <RecipeCommentsForm/>
+    <RecipeComments/>
+  
     </>
   
   )
