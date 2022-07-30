@@ -20,6 +20,10 @@ export default function Navigation() {
                     <Link className="nav-link active"  to="/createRecipe">
                         Create Recipe
                     </Link>
+                    <Link
+                    className="nav-link active"  to="/profile">
+                        Profile
+                    </Link>
                 </div>
             </div>
         </nav>

@@ -1,4 +1,5 @@
-import Comment from './comment/Comment'
+import Comment from './comment/Comment';
+
 import './RecipeCommentsSection.css'
 
 

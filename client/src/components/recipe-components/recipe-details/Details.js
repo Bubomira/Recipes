@@ -5,8 +5,7 @@ export default function Details() {
   return (
     <>
     <section className="clean-block clean-info">
-      <div className="container">
-      
+      <div className="container">   
         <div className="row align-items-center">
           <div className="col-md-6">
             <img className="img-thumbnail" src="https://i0.wp.com/ichef.bbci.co.uk/food/ic/food_16x9_506/recipes/cupcakes_93722_16x9.jpg" />
