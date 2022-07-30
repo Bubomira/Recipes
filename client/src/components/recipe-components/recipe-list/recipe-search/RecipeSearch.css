@@ -1,0 +1,17 @@
+.search-input {
+    width:1027px;
+}
+
+.search-form {
+    padding-top: 10px;
+    padding-bottom:10px;
+    padding-left:10px;
+    padding-right:10px;
+    background-color:#76a5af;
+}
+
+.search-submit {
+    background-color:#45818e;
+    color:white;
+    border-color:#45818e;
+}
