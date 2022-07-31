@@ -10,6 +10,7 @@ import CreateRecipe from './components/recipe-components/recipe-create/CreateRec
 import EditRecipe from './components/recipe-components/recipe-edit/EditRecipe'
 import UserProfile from './components/user-profile/UserProfile'
 import LikedRecipies from './components/recipe-components/liked-recipes/LikedRecipes'
+import OwnedRecepies from './components/recipe-components/owned-recipes/OwnedRecipies'
 
 function App() {
   return (
@@ -24,7 +25,7 @@ function App() {
       <Route path='/editRecipe/:recipeId' element={<EditRecipe/>}/>
       <Route path='/profile' element={<UserProfile/>}/>
       <Route path='/likedRecepies/:userId' element={<LikedRecipies/>}/>
-      <Route path='/likedRecipies'/>
+      <Route path='/ownedRecipies/:userId' element={<OwnedRecepies/>}/>
     </Routes>
 </>
 
