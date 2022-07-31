@@ -2,7 +2,7 @@ const recipeRouter = require('express').Router();
 
 const {isAuth} = require('../middlewares/guards')
 const{getAllRecipes,createRecipe, deleteRecipe, editRecipe,getRecipe, likeRecipe,dislikeRecipe,attachComment} = require('../services/recipeServices')
-const {addRecipeToLiked, removeRecipeFromLiked,findUser} = require('../services/userService')
+const {addRecipeToLiked, removeRecipeFromLiked,findUser,addRecipeToOwned} = require('../services/userService')
 const {createComment} = require('../services/commentServices')
 
 recipeRouter.get('/catalog',async(req,res)=>{
@@ -61,7 +61,9 @@ recipeRouter.post('/comment/:recipieId',async(req,res)=>{
 
 recipeRouter.post('/create',isAuth(),async(req,res)=>{
   try{
-    res.status(201).json(await createRecipe(req.body,req.user._id))
+    const createdRecipe =await createRecipe(req.body,req.user._id);
+    addRecipeToOwned(req.user._id,createdRecipe)
+    res.status(201).json(createdRecipe)
     
   }catch(err){
     res.status(400).json({message:err.message})

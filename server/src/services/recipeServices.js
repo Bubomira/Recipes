@@ -18,6 +18,8 @@ module.exports.createRecipe = async(data,id)=>{
         ingridients:data.ingridients,
         type:data.type,
         likes:0,
+        imageUrl:data.imageUrl,
+        steps:data.steps,
         ownerId :id 
     })
 
