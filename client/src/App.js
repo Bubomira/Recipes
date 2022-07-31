@@ -9,6 +9,7 @@ import RecipeList from './components/recipe-components/recipe-list/RecipeList'
 import CreateRecipe from './components/recipe-components/recipe-create/CreateRecipe'
 import EditRecipe from './components/recipe-components/recipe-edit/EditRecipe'
 import UserProfile from './components/user-profile/UserProfile'
+import LikedRecipies from './components/recipe-components/liked-recipes/LikedRecipes'
 
 function App() {
   return (
@@ -22,6 +23,8 @@ function App() {
       <Route path='/createRecipe' element={<CreateRecipe/>}/>
       <Route path='/editRecipe/:recipeId' element={<EditRecipe/>}/>
       <Route path='/profile' element={<UserProfile/>}/>
+      <Route path='/likedRecepies/:userId' element={<LikedRecipies/>}/>
+      <Route path='/likedRecipies'/>
     </Routes>
 </>
 

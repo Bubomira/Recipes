@@ -1,10 +1,11 @@
+import { createContext } from 'react'
 import { Link } from 'react-router-dom'
 
 import './UserProfile.css'
 
 export default function UserProfile() {
     return (
-        <div className="wrapper">
+        <div className="wrapper-profile">
         <div className="profile-container">
             <div className="avatar">
                 <img
@@ -17,10 +18,10 @@ export default function UserProfile() {
             <h3>Email: mariya@abv.bg </h3>
             <p>
                 
-                <Link to={'/user/likedRecepies'}>liked recepies</Link>
+                <Link to={'/likedRecepies/userId'}>liked recepies</Link>
             </p>
             <p>
-                <Link to={'/user/likedRecepies'}>owned recepies</Link>
+                <Link to={'/ownedRecipies/userId'}>owned recepies</Link>
             </p>
         </div>
      </div>

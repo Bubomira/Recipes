@@ -1,6 +1,6 @@
 import './RecipeList.css'
 
-import RecipeCard from './recipe-card/RecipeCard'
+import RecipeCard from '../recipe-card/RecipeCard'
 import RecipeSearch from './recipe-search/RecipeSearch'
 
 export default function RecipeList() {
