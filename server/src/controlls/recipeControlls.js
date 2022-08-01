@@ -1,7 +1,7 @@
 const recipeRouter = require('express').Router();
 
 const {isAuth} = require('../middlewares/guards')
-const{getAllRecipes,createRecipe, deleteRecipe, editRecipe,getRecipe, likeRecipe,dislikeRecipe,attachComment} = require('../services/recipeServices')
+const{getAllRecipes,createRecipe, deleteRecipe, editRecipe,getRecipe, likeRecipe,dislikeRecipe,attachComment,getFirstThreeRecipies} = require('../services/recipeServices')
 const {addRecipeToLiked, removeRecipeFromLiked,findUser,addRecipeToOwned} = require('../services/userService')
 const {createComment} = require('../services/commentServices')
 
@@ -9,6 +9,9 @@ recipeRouter.get('/catalog',async(req,res)=>{
     res.json(await getAllRecipes());
    
 })
+recipeRouter.get('/getLatest',async(req,res)=>{
+    res.json(await getFirstThreeRecipies)
+ })
 
 recipeRouter.post('/catalog/search',async (req,res)=>{
    res.json( await getAllRecipes(req.body))
@@ -17,15 +20,19 @@ recipeRouter.post('/catalog/search',async (req,res)=>{
 recipeRouter.get('/details/:recipeId',async(req,res)=>{
     try{
         const recipe = await getRecipe(req.params.recipeId)
-        const user = await findUser(req.user._id);
-        req.user.likedRecipies = user.likedRecipies;
-        res.json([recipe,user.likedRecipies])  
+        if(req.user){
+            const user = await findUser(req.user._id);
+            const isLikedByUser = user.likedRecipies.some(x=>x._id.toString()==req.params.recipeId)
+            res.json({recipe,isLiked:isLikedByUser,isOwned:req.user._id==recipe.ownerId.toString()})  
+        }else{
+            res.json(recipe)
+        }
     }catch(err){
         res.status(404).json({message:err.message})
     }
 })
 
-recipeRouter.get('/likeRecipe/:recipeId',async (req,res)=>{
+recipeRouter.get('/likeRecipe/:recipeId',isAuth(),async (req,res)=>{
     try{
         const recipe = await likeRecipe(req.params.recipeId);
         await addRecipeToLiked(req.user._id,recipe)
