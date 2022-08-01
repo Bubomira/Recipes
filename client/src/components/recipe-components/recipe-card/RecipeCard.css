@@ -23,10 +23,18 @@
     border-radius: .25rem;
 }
 
-.card-img-top {
-    width: 100%;
-    border-top-left-radius: calc(.25rem - 1px);
-    border-top-right-radius: calc(.25rem - 1px);
+.details-image {
+    padding-top:200px;
+    position: relative;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 2px solid rgba(0, 0, 0, .125);
+    border-radius: .25rem;
+    border-color:white;
 }
 
 .w-100 {

@@ -16,13 +16,6 @@ body {
    margin-left: 120px;
 }
 
-.clean-block.dark {
-    background-color: #f6f6f6
-}
-
-.clean-block.dark .block-heading p {
-    opacity: .8
-}
 
 .container {
     width: 100%;
@@ -122,8 +115,10 @@ p.recipe-description{
     margin-top:20px;
     color:black;
     line-height: 1.25;
+    font-size: 17px;
 }
 .likes{
+    padding-top: 10px;
     color:black;
     text-align: left;
     font-size: 22px;

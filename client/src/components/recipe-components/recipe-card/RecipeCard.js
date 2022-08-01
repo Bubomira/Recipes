@@ -7,9 +7,9 @@ export default function RecipeCard({recipe}){
     return(
         <div className="card-wrapper">
       <div className="card">
-        <img
-          className="card-img-top w-100 d-block"
-          src={recipe.imageUrl}
+      <div className="details-image" 
+      style={{ backgroundImage: `url(${recipe.imageUrl}) `,
+        backgroundSize: "cover"}}
         />
         <div className="card-body">
           <h4 className="card-title">{recipe.title}</h4>

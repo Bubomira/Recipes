@@ -1,3 +1,7 @@
+.details-wrapper {
+    background-color:#d0e0e3;
+}
+
 .container {
     width: 100%;
     padding-right: 15px;
@@ -14,9 +18,13 @@
     margin-right: -15px;
     margin-left: -15px;
 }
-
-body{
-    background-color:#d0e0e3;
+.no-recipes {
+    margin-top:150px;
+    text-align:left;
+    font-size:30px;
+     color:#134f5c;
+     padding-bottom: 90px;
 }
+
 
 
