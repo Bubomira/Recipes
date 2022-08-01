@@ -11,12 +11,14 @@ import EditRecipe from './components/recipe-components/recipe-edit/EditRecipe'
 import UserProfile from './components/user-profile/UserProfile'
 import LikedRecipies from './components/recipe-components/liked-recipes/LikedRecipes'
 import OwnedRecepies from './components/recipe-components/owned-recipes/OwnedRecipies'
+import Home from './components/home/Home'
 
 function App() {
   return (
     <>
     <Navigation/>
     <Routes>
+    <Route path='/' element={<Home/>}/>
       <Route path='/register' element={<Register/>}/>
       <Route path='/login' element={<Login/>}/>
       <Route path='/details/:recipeId' element={<Details/>}/>

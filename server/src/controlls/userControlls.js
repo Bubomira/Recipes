@@ -3,6 +3,8 @@ const userRouter = require('express').Router();
 const{loginUser,logoutUser,registerUser} = require('../services/authServices');
 const {findUser,getLikedRecepies,getOwnedRecipes} = require('../services/userService')
 
+const {isAuth} = require('../middlewares/guards')
+
 userRouter.post('/login',async(req,res)=>{
   try{
     const token = await loginUser(req.body);
@@ -28,11 +30,11 @@ userRouter.get('/logout',(req,res)=>{
    res.status(204).end()
 })
 
-userRouter.get('/profile',async(req,res)=>{
+userRouter.get('/profile',isAuth(),async(req,res)=>{
    res.json(await findUser(req.user._id))
 })
 
-userRouter.get('/likedRecepies/:userId',async(req,res)=>{
+userRouter.get('/likedRecepies/:userId',isAuth(),async(req,res)=>{
   try{
      const likedRecipies = await getLikedRecepies(req.params.userId)
      res.json(likedRecipies)
@@ -40,7 +42,7 @@ userRouter.get('/likedRecepies/:userId',async(req,res)=>{
    res.status(400).json({message:err.message})
   }
 })
-userRouter.get('/ownedRecipies/:userId',async(req,res)=>{
+userRouter.get('/ownedRecipies/:userId',isAuth(),async(req,res)=>{
    try{
       const ownedRecipies = await getOwnedRecipes(req.params.userId)
       res.json(ownedRecipies)

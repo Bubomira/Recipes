@@ -10,7 +10,7 @@ recipeRouter.get('/catalog',async(req,res)=>{
    
 })
 recipeRouter.get('/getLatest',async(req,res)=>{
-    res.json(await getFirstThreeRecipies)
+    res.json(await getFirstThreeRecipies())
  })
 
 recipeRouter.post('/catalog/search',async (req,res)=>{
@@ -54,14 +54,14 @@ recipeRouter.get('/dislikeRecipe/:recipeId',async (req,res)=>{
    
 })
 
-recipeRouter.post('/comment/:recipieId',async(req,res)=>{
-    try{
+recipeRouter.post('/comment/:recipieId',isAuth(),async(req,res)=>{
+try{
         const comment = await createComment(req.body,req.user._id);
        const recipe= await attachComment(comment,req.params.recipieId)
-      res.status(201).json({comment,username:user.username})
+      res.status(201).json({comment,username:req.user.username})
     }catch(err){
-        res.status(400).json({message:err.message})
-    }
+       res.status(400).json({message:err.message})
+   }
    
 })
 

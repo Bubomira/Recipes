@@ -7,7 +7,6 @@ const auth = require('./middlewares/auth')
 
 const app = express();
 
-
 const start = async()=>{
     try{
         await mongoose.connect('mongodb://localhost:27017/recipes')
