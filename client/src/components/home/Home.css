@@ -1,0 +1,39 @@
+.home-wrapper {
+    max-width: 100%;
+    max-height: 100%;
+    background-color: #d0e0e3;
+}
+
+.greeter {
+    color:#45818e;
+    font-size:35px;
+    text-align: center;
+    padding-top: 60px;
+    padding-bottom: 60px;
+    font-weight:600;
+}
+
+.first-three-recipes {
+    background-color: #a2c4c9;
+    margin-left: 30px;
+    margin-right: 30px;
+    padding-bottom:60px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+}
+
+.get-started{
+    padding-top: 40px;
+    font-size: 25px;
+    text-align: center;
+    padding-bottom:40px;
+}
+
+.no-recipes {
+    padding-top:60px;
+    text-align:center;
+    font-size:30px;
+ color:#134f5c;
+}

@@ -22,10 +22,10 @@ export default function Details() {
               </p>
             </div>
             {/* Owner functionality
-               <button className="btn-edit btn-lg" type="button">
+               <button className="btn-edit btn-lg" >
                 Edit
               </button>
-              <button className="btn-delete btn-lg" type="button">
+              <button className="btn-delete btn-lg" >
                 Delete
               </button>
               */ }
@@ -35,10 +35,10 @@ export default function Details() {
                */}
           </div>
         </div>
-      </div>       
+      </div> 
     </section>
-    <RecipeComments/>
-  
+    <RecipeComments/> 
+        
     </>
   
   )
