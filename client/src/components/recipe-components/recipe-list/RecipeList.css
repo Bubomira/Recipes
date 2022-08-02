@@ -19,9 +19,10 @@
     margin-left: -15px;
 }
 .no-recipes {
+    padding-left:390px;
     margin-top:150px;
     text-align:left;
-    font-size:30px;
+    font-size:35px;
      color:#134f5c;
      padding-bottom: 90px;
 }
