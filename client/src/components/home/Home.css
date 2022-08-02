@@ -31,7 +31,8 @@
     padding-bottom:40px;
 }
 
-.no-recipes {
+.home-no-recipes {
+    padding-left:450px;
     padding-top:60px;
     text-align:center;
     font-size:30px;
