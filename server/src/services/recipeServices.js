@@ -1,7 +1,13 @@
 const Recipe = require('../models/Recipe')
 
 module.exports.getFirstThreeRecipies = async()=>{
-    return Recipe.find({}).limit(3);
+   let recipes = await this.getAllRecipes();
+ const reversedRecipes=  recipes.reverse();
+  if(reversedRecipes.length<3){
+    return reversedRecipes;
+  }else{
+    return [reversedRecipes[0],reversedRecipes[1],reversedRecipes[2]]
+  }
 }
 
 module.exports.getAllRecipes = async(filter)=>{
