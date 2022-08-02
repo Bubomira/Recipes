@@ -1,11 +1,8 @@
+import {get} from '../utils/requester'
+
 const baseURL = 'http://localhost:3030/recipe'
 
-export const getLatestRecipes = async()=>{
-    const response = await fetch(`${baseURL}/getLatest`)
-    return await response.json();
-}
+export const getLatestRecipes = async()=> await get(`${baseURL}/getLatest`)
 
-export const getAllRecipes =async()=>{
-    const response  =await fetch(`${baseURL}/catalog`)
-    return await response.json();
-}
+export const getAllRecipes =async()=>await get(`${baseURL}/catalog`)
+ 
