@@ -7,8 +7,8 @@ const {isAuth} = require('../middlewares/guards')
 
 userRouter.post('/login',async(req,res)=>{
   try{
-    const token = await loginUser(req.body);
-    res.json(token);
+    const userSessionData = await loginUser(req.body);
+    res.json(userSessionData);
   }catch(err){
     res.status(400).json({message:err.message})
   }
@@ -17,8 +17,8 @@ userRouter.post('/login',async(req,res)=>{
 
 userRouter.post('/register',async(req,res)=>{
     try{
-    const token =await registerUser(req.body)
-    res.status(201).json(token)
+    const userSessionData =await registerUser(req.body)
+    res.status(201).json(userSessionData)
     }catch(err){
      res.status(400).json({message:err.message})
     }

@@ -16,8 +16,8 @@ module.exports.loginUser = async(userInfo)=>{
     if(!areMatching){
         throw new Error('Incorrect username or password')
     }
-
-    return generateToken(user)
+    const token = await generateToken(user) 
+    return {token ,_id:user._id, username:user.username}
 }
 
 module.exports.registerUser = async(userInfo)=>{
@@ -38,7 +38,8 @@ module.exports.registerUser = async(userInfo)=>{
         username:username,
         password:hashedPass
     })
-   return generateToken(user)
+    const token =await generateToken(user) 
+    return {token ,_id:user._id, username:user.username}
 }
 
 module.exports.logoutUser = (token)=>{
