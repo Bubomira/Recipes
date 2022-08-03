@@ -6,5 +6,5 @@ export const register= (data)=> post(`${baseURL}/register`,data)
 
 export const login=(data)=>post(`${baseURL}/login`,data)
 
-export const logout =()=> get(`${baseURL}/logout`)
+export const logout =()=> get (`${baseURL}/logout`)
 

@@ -1,29 +1,28 @@
 
 const requester = async (method, url, data) => {
     const user = localStorage.getItem('user')
-   let headers = {};
+    const userData = JSON.parse(user|| '{}')
+   let customHeaders = {};
    
-   if(user!={}){
-    headers['x-authorization']=JSON.parse(user).token;
+   if(userData.token){
+    customHeaders['x-authorization']=JSON.parse(user).token;
    }
 
     let request;
     if (method == 'GET') {
-        request = fetch(url,{
-            method,
-            headers
+        request = fetch(url ,{
+            customHeaders
         })
     }else{
         request = fetch(url,{
             method,
             headers:{
-                ...headers,
+                ...customHeaders,
                 'content-type':'application/json'
             },
             body:JSON.stringify(data)
         })
     }
-
     const response = await request;
     const result = response.json()
     return result;

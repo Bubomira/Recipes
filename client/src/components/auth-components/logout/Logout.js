@@ -13,7 +13,7 @@ export default function Logout(){
         logoutUser()
         navigate('/')
        })
-    },[])
+       },[])
 
     return [];
 }
