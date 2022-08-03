@@ -11,9 +11,10 @@ body {
 }
 
 .clean-info h3 {
+    text-align: center;
     margin-top: .8em;
     margin-bottom: .6em;
-   margin-left: 120px;
+    margin-right:30px;
 }
 
 

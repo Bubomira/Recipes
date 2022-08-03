@@ -1,9 +1,10 @@
-
+import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import AuthContext from './contexts/AuthContext'
+import RecipeContext from './contexts/RecipeContext'
 
-import useLokalStorageAuth  from './hooks/useLokalStorageAuth'
+import useLokalStorageAuth from './hooks/useLokalStorageAuth'
 
 import Register from './components/auth-components/register/Register'
 import Login from './components/auth-components/login/Login'
@@ -20,30 +21,37 @@ import Home from './components/home/Home'
 
 
 function App() {
-   let [user, setUser] = useLokalStorageAuth({});
+    let [recipeInfo, setRecipeInfo] = useState({})
+    let [user, setUser] = useLokalStorageAuth({});
     const loginUser = (newUser) => {
         setUser(newUser);
     }
-    const logoutUser =()=>{
+    const logoutUser = () => {
         setUser({})
     }
+    const setDetailedRecipeInfo = (recipe) => {
+        setRecipeInfo(recipe);
+    }
+
     return (
         <>
-            <AuthContext.Provider  value={{user:user,loginUser,logoutUser}}>
-                <Navigation />
-                <Routes>
-                    <Route path='/' element={<Home />} />
-                    <Route path='/register' element={<Register />} />
-                    <Route path='/login' element={<Login />} />
-                    <Route path='/details/:recipeId' element={<Details />} />
-                    <Route path='/recipeCatalog' element={<RecipeList />} />
-                    <Route path='/createRecipe' element={<CreateRecipe />} />
-                    <Route path='/editRecipe/:recipeId' element={<EditRecipe />} />
-                    <Route path='/profile' element={<UserProfile />} />
-                    <Route path='/likedRecepies/:userId' element={<LikedRecipies />} />
-                    <Route path='/ownedRecipies/:userId' element={<OwnedRecepies />} />
-                    <Route path='/logout' element={<Logout />} />
-                </Routes>
+            <AuthContext.Provider value={{ user: user, loginUser, logoutUser }}>
+                <RecipeContext.Provider value={{ recipeInfo: recipeInfo, setDetailedRecipeInfo }}>
+                    <Navigation />
+                    <Routes>
+                        <Route path='/details/:recipeId' element={<Details />} />
+                        <Route path='/editRecipe/:recipeId' element={<EditRecipe />} />
+                        <Route path='/' element={<Home />} />
+                        <Route path='/register' element={<Register />} />
+                        <Route path='/login' element={<Login />} />
+                        <Route path='/recipeCatalog' element={<RecipeList />} />
+                        <Route path='/createRecipe' element={<CreateRecipe />} />
+                        <Route path='/profile' element={<UserProfile />} />
+                        <Route path='/likedRecepies/:userId' element={<LikedRecipies />} />
+                        <Route path='/ownedRecipies/:userId' element={<OwnedRecepies />} />
+                        <Route path='/logout' element={<Logout />} />
+                    </Routes>
+                </RecipeContext.Provider>
             </AuthContext.Provider>
         </>
 
