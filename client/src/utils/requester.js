@@ -1,10 +1,10 @@
 
 const requester = async (method, url, data) => {
     const user = localStorage.getItem('user')
-
-   const headers = {};
-   if(user.token){
-    headers['x-authorization']=user.token;
+   let headers = {};
+   
+   if(user!={}){
+    headers['x-authorization']=JSON.parse(user).token;
    }
 
     let request;

@@ -1,7 +1,12 @@
 import { useState } from 'react';
+import {useNavigate} from 'react-router-dom'
+
+import { createRecipe } from '../../../services/recipeService';
+
 import './CreateRecipe.css'
 
 export default function CreateRecipe() {
+    const navigate = useNavigate()
   let [values, setValues] = useState({
     title: '',
     ingridients: '',
@@ -17,7 +22,10 @@ export default function CreateRecipe() {
   }
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(values)
+    createRecipe(values).then(()=>{
+        navigate('/recipeCatalog')
+    })
+    
   }
   return (
     <div className='wrapper'>
