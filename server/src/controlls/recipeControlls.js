@@ -25,7 +25,7 @@ recipeRouter.get('/details/:recipeId',async(req,res)=>{
             const isLikedByUser = user.likedRecipies.some(x=>x._id.toString()==req.params.recipeId)
             res.json({recipe,isLiked:isLikedByUser,isOwned:req.user._id==recipe.ownerId.toString()})  
         }else{
-            res.json(recipe)
+            res.json({recipe:recipe})
         }
     }catch(err){
         res.status(404).json({message:err.message})

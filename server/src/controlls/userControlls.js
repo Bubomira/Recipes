@@ -25,9 +25,9 @@ userRouter.post('/register',async(req,res)=>{
    
 })
 
-userRouter.get('/logout',(req,res)=>{
+userRouter.get('/logout',isAuth(),(req,res)=>{
    logoutUser(req.user.token);
-   res.status(204).end()
+   res.status(200).json({message:'successfully logouted!'})
 })
 
 userRouter.get('/profile',isAuth(),async(req,res)=>{
