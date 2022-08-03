@@ -21,7 +21,7 @@ export default function RecipeList() {
             <div className="container">
                 <RecipeSearch />
                 <div className="row">
-                    {allRecipes == 0 ?
+                    {allRecipes.length==0 ?
                         <h2 className="no-recipes"> No recipes in database</h2>
                         :
                         allRecipes.map(x => <RecipeCard key={x._id} recipe={x} />)
