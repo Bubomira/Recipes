@@ -7,6 +7,7 @@ import useLokalStorageAuth  from './hooks/useLokalStorageAuth'
 
 import Register from './components/auth-components/register/Register'
 import Login from './components/auth-components/login/Login'
+import Logout from './components/auth-components/logout/Logout'
 import Navigation from './components/Navigation'
 import Details from './components/recipe-components/recipe-details/Details'
 import RecipeList from './components/recipe-components/recipe-list/RecipeList'
@@ -23,9 +24,12 @@ function App() {
     const loginUser = (newUser) => {
         setUser(newUser);
     }
+    const logoutUser =()=>{
+        setUser({})
+    }
     return (
         <>
-            <AuthContext.Provider  value={{user:user,loginUser}}>
+            <AuthContext.Provider  value={{user:user,loginUser,logoutUser}}>
                 <Navigation />
                 <Routes>
                     <Route path='/' element={<Home />} />
@@ -38,6 +42,7 @@ function App() {
                     <Route path='/profile' element={<UserProfile />} />
                     <Route path='/likedRecepies/:userId' element={<LikedRecipies />} />
                     <Route path='/ownedRecipies/:userId' element={<OwnedRecepies />} />
+                    <Route path='/logout' element={<Logout />} />
                 </Routes>
             </AuthContext.Provider>
         </>

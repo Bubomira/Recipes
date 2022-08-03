@@ -1,5 +1,7 @@
-import {post} from '../utils/requester'
+import {post,get} from '../utils/requester'
 
 const baseURL ='http://localhost:3030/user'
 
 export const register= (data)=> post(`${baseURL}/register`,data)
+
+export const logout =()=> get(`${baseURL}/logout`)
