@@ -34,8 +34,10 @@ module.exports.createRecipe = async(data,id)=>{
 module.exports.editRecipe = async(id,data)=>{
   let recipe = await this.getRecipe(id);
   recipe.title = data.title;
-  recipe.ingridients = data.ingridients,
-  recipe.type=data.type 
+  recipe.ingridients = data.ingridients;
+  recipe.type=data.type ;
+  recipe.steps=data.steps;
+  recipe.imageUrl =data.imageUrl;
     await recipe.save();
     return recipe;
 }
