@@ -1,28 +1,38 @@
 
-import { Link } from 'react-router-dom'
+import { Link ,useNavigate} from 'react-router-dom'
+
+import {deleteRecipe} from '../../../../services/recipeService'
 
 import './RecipeDetailsButtons.css'
 
 export default function RecipeDetailsButtons({ isLiked, isOwned, id }) {
+    const navigate = useNavigate()
+    const deleteRecipeHandler=()=>{
+        deleteRecipe(id).then(()=>{
+            navigate('/recipeCatalog')
+        })
+    }
     if (isLiked == null || isOwned == null) {
         return;
     } else {
         if (isOwned) {
             return (
                 <>
-                    <Link className="btn-edit btn-lg" to={`/editRecipe/${id}`}>
+                <button className="btn-edit btn-lg">
+                    <Link  to={`/editRecipe/${id}`}>
                         Edit
                     </Link>
-                    <Link className="btn-delete btn-lg" to={`/deleteRecipe/${id}`} >
+                </button>
+                 <button className="btn-delete btn-lg" onClick={deleteRecipeHandler}>
                         Delete
-                    </Link>
+                 </button>
                 </>
             )
         } else {
             return (
                 <>
                     <button className="btn-like-dislike btn-lg" disabled={isLiked}>Like</button>
-                    <button className="btn-like-dislike btn-lg" disabled={isLiked}>Disllike</button>
+                    <button className="btn-like-dislike btn-lg" disabled={!isLiked}>Disllike</button>
                 </>
             )
         }

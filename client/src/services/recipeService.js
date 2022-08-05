@@ -1,4 +1,4 @@
-import {get,post,put} from '../utils/requester'
+import {get,post,put,del} from '../utils/requester'
 
 const baseURL = 'http://localhost:3030/recipe'
 
@@ -11,6 +11,8 @@ export const getOneRecipe = async(recipeId)=> await get(`${baseURL}/details/${re
 export const createRecipe=async(data)=>await post(`${baseURL}/create`,data)
 
 export const editRecipe = async(id,data)=>await put(`${baseURL}/edit/${id}`,data)
+
+export const deleteRecipe =async(id)=>await del(`${baseURL}/delete/${id}`)
 
 
  
