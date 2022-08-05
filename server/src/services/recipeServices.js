@@ -38,6 +38,7 @@ module.exports.editRecipe = async(id,data)=>{
   recipe.type=data.type ;
   recipe.steps=data.steps;
   recipe.imageUrl =data.imageUrl;
+  recipe.likes = data.likes;
     await recipe.save();
     return recipe;
 }
@@ -51,7 +52,7 @@ module.exports.getRecipe = async(id)=>{
 }
 
 module.exports.likeRecipe = async(id)=>{
-
+    
     let recipe = await this.getRecipe(id);
     recipe.likes +=1;
     await recipe.save();

@@ -6,7 +6,7 @@ module.exports.findUser= async(id)=>{
 
 module.exports.addRecipeToLiked = async(id,recipe)=>{
     const user = await User.findById(id);
-    if(user.likedRecipies.includes(recipe._id)){
+    if(user.likedRecipies.includes(recipe._id.toString())){
        throw new Error( 'You have alreadly liked this recepie!')
     }
     user.likedRecipies.push(recipe);

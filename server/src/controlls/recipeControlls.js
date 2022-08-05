@@ -34,8 +34,9 @@ recipeRouter.get('/details/:recipeId',async(req,res)=>{
 
 recipeRouter.get('/likeRecipe/:recipeId',isAuth(),async (req,res)=>{
     try{
-        const recipe = await likeRecipe(req.params.recipeId);
+        const recipe =await getRecipe(req.params.recipeId)
         await addRecipeToLiked(req.user._id,recipe)
+          await likeRecipe(req.params.recipeId);
         res.json({message:'Successfuly liked!'})
     }catch(err){
         res.status(400).json({message:err.message})
@@ -45,8 +46,9 @@ recipeRouter.get('/likeRecipe/:recipeId',isAuth(),async (req,res)=>{
 
 recipeRouter.get('/dislikeRecipe/:recipeId',async (req,res)=>{
     try{
-        const recipe = await dislikeRecipe(req.params.recipeId);
-      await removeRecipeFromLiked(req.user._id,recipe)
+        const recipe = await getRecipe(req.params.recipeId)
+        await removeRecipeFromLiked(req.user._id,recipe)
+         await dislikeRecipe(req.params.recipeId);
         res.json({message:'Successfuly disliked!'})
     }catch(err){
         res.status(400).json({message:err.message})
