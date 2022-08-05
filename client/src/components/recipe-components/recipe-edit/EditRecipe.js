@@ -1,15 +1,29 @@
-import {useState} from 'react';
+import {useState,useContext,useEffect} from 'react';
+import { useNavigate,useParams } from 'react-router-dom';
+
+import RecipeContext from '../../../contexts/RecipeContext'
+
+import {getOneRecipe,editRecipe} from '../../../services/recipeService'
 
 import './EditRecipe.css'
 
 export default function EditRecipe(){
-  //* to do: set values to recipe initial values */
+ const {setDetailedRecipeInfo,recipeInfo} = useContext(RecipeContext);
+ const navigate = useNavigate();
+ const {recipeId} = useParams()
+
+ useEffect(() => {
+  getOneRecipe(recipeId).then(recipeDetailed => {
+    setDetailedRecipeInfo(recipeDetailed)
+  })
+}, [recipeId])
+
   let [values,setValues] =useState({
-    title: '',
-    ingridients: '',
-    imageUrl: '',
-    steps: '',
-    type: '',
+    title: recipeInfo.recipe.title,
+    ingridients: recipeInfo.recipe.ingridients,
+    imageUrl: recipeInfo.recipe.imageUrl,
+    steps: recipeInfo.recipe.steps,
+    type: recipeInfo.recipe.type,
   })
   const onChangeHandler = (e) => {
     setValues(oldState => ({
@@ -19,7 +33,9 @@ export default function EditRecipe(){
   }
   const onSubmitHandler = (e) => {
     e.preventDefault();
-    console.log(values)
+    editRecipe(recipeInfo.recipe._id,values).then(()=>{
+      navigate(`/details/${recipeInfo.recipe._id}`)
+    })
   }
     return (
         <div className='wrapper'>
