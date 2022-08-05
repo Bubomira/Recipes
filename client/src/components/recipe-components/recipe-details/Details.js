@@ -39,7 +39,7 @@ export default function Details() {
 									How to prepare: {recipeInfo.recipe?.steps}
 								</p>
 							</div>
-							<RecipeDetailsButtons isLiked={recipeInfo.isLiked} isOwned={recipeInfo.isOwned} id={recipeInfo.recipe?._id} />
+							<RecipeDetailsButtons isLiked={recipeInfo.isLiked} isOwned={recipeInfo.isOwned} id={recipeInfo.recipe?._id}  />
 						</div>
 					</div>
 				</div>

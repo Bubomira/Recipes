@@ -52,10 +52,36 @@ function App() {
         ))
     }
 
+    const addLikeToRecipe=()=>{
+        let newLikes = recipeInfo.recipe.likes;
+        newLikes++;
+        setRecipeInfo(oldRecipeInfo=>({
+            ...oldRecipeInfo,
+            isLiked:true,
+            recipe:{
+                ...oldRecipeInfo.recipe,
+                likes:newLikes,
+                
+            }            
+        }))
+    }
+    const addDislikeToRecipe=()=>{
+        let newLikes = recipeInfo.recipe.likes;
+        newLikes--;
+        setRecipeInfo(oldRecipeInfo=>({
+            ...oldRecipeInfo,
+            isLiked:false,
+            recipe:{
+                ...oldRecipeInfo.recipe,
+               likes :newLikes,
+            }      
+        }))
+    }
+
     return (
         <>
             <AuthContext.Provider value={{ user: user, loginUser, logoutUser }}>
-                <RecipeContext.Provider value={{ recipeInfo: recipeInfo, setDetailedRecipeInfo,addComment }}>
+                <RecipeContext.Provider value={{ recipeInfo: recipeInfo, setDetailedRecipeInfo,addComment,addLikeToRecipe,addDislikeToRecipe }}>
                     <Navigation />
                     <Routes>
                         <Route path='/details/:recipeId' element={<Details />} />

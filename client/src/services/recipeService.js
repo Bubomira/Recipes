@@ -14,5 +14,9 @@ export const editRecipe = async(id,data)=>await put(`${baseURL}/edit/${id}`,data
 
 export const deleteRecipe =async(id)=>await del(`${baseURL}/delete/${id}`)
 
+export const likeRecipe =async(id)=>await get(`${baseURL}/likeRecipe/${id}`)
+
+export const dislikeRecipe =async(id)=>await get(`${baseURL}/dislikeRecipe/${id}`)
+
 
  
