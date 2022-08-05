@@ -3,15 +3,14 @@ const requester = async (method, url, data) => {
     const user = localStorage.getItem('user')
     const userData = JSON.parse(user|| '{}')
    let customHeaders = {};
-   
    if(userData.token){
-    customHeaders['x-authorization']=JSON.parse(user).token;
-   }
+       customHeaders['x-authorization']=JSON.parse(user).token;
+    }
 
     let request;
     if (method == 'GET') {
         request = fetch(url ,{
-            customHeaders
+            headers:{...customHeaders}
         })
     }else{
         request = fetch(url,{

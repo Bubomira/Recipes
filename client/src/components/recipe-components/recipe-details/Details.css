@@ -74,30 +74,6 @@ p {
     position: -ms-page;
 }
 
-.btn-edit {
-    color: white;
-    background-color: #eccb35;
-    background-image: none;
-    border-color: #dfc035;
-    margin-left: 87px;
-}
-
-.btn-delete {
-    color: white;
-    background-color: #a52913;
-    background-image: none;
-    border-color: #aa3b27;
-    margin-left: 40px;
-    margin-right: 60px;
-    margin-top: 20px;
-}
-
-.btn-lg {
-    padding: .5rem 1rem;
-    font-size: 1.25rem;
-    line-height: 1.5;
-    border-radius: .5rem
-}
 
 .getting-started-info p {
     color:#000000;
@@ -107,6 +83,7 @@ p {
         line-height: 1; 
 }
 p.recipe-description{
+    padding-bottom:30px;
     width: 100%;
     padding-left: 15px;
     padding-right:15px;
@@ -124,14 +101,4 @@ p.recipe-description{
     text-align: left;
     font-size: 22px;
     font-weight: 300;
-}
-
-.btn-like-dislike{
-    margin-left: 70px;
-    margin-right: 10px;
-    margin-top: 20px;
-   background-color:#76a5af;
-   color:white;
-   border-color:#45818e;
-
 }

@@ -6,17 +6,21 @@ import RecipeContext from '../../../contexts/RecipeContext'
 import { getOneRecipe } from '../../../services/recipeService'
 
 import RecipeComments from './recipe-comments/RecipeComments'
+import RecipeDetailsButtons from './recipe-details-buttons/RecipeDetailsButtons'
 
 import './Details.css'
+import AuthContext from '../../../contexts/AuthContext'
 export default function Details() {
 	const { recipeInfo, setDetailedRecipeInfo } = useContext(RecipeContext);
+	const { user } = useContext(AuthContext)
 	const { recipeId } = useParams();
 	useEffect(() => {
-		getOneRecipe(recipeId).then(recipeInfo => {
-			setDetailedRecipeInfo(recipeInfo)
+		getOneRecipe(recipeId).then(recipeDetailed => {
+			setDetailedRecipeInfo(recipeDetailed)
 		})
+	}, [recipeId, user])
 
-	}, [recipeId])
+	console.log(recipeInfo)
 	return (
 		<>
 			<section className="clean-block clean-info">
@@ -36,24 +40,8 @@ export default function Details() {
 									How to prepare: {recipeInfo.recipe?.steps}
 								</p>
 							</div>
-							{/*Buttons
-							 
-								<>
-									<button className="btn-like-dislike btn-lg" disabled={recipeInfo.isLiked}>Like</button>
-									<button className="btn-like-dislike btn-lg" disabled={recipeInfo.isLiked == false}>Disllike</button>
-								</>
-								:
-							<>
-								<button className="btn-edit btn-lg" >
-									Edit
-								</button>
-								<button className="btn-delete btn-lg" >
-									Delete
-								</button>
-							</>							
+							<RecipeDetailsButtons isLiked={recipeInfo.isLiked} isOwned={recipeInfo.isOwned} id={recipeInfo.recipe?._id}/>
 							
-	*/}
-						
 						</div>
 					</div>
 				</div>

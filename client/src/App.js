@@ -21,7 +21,11 @@ import Home from './components/home/Home'
 
 
 function App() {
-    let [recipeInfo, setRecipeInfo] = useState({})
+    let [recipeInfo, setRecipeInfo] = useState({
+        recipe:{},
+        isOwner:null,
+        isLiked:null
+    })
     let [user, setUser] = useLokalStorageAuth({});
     const loginUser = (newUser) => {
         setUser(newUser);
@@ -29,8 +33,14 @@ function App() {
     const logoutUser = () => {
         setUser({})
     }
-    const setDetailedRecipeInfo = (recipe) => {
-        setRecipeInfo(recipe);
+    const setDetailedRecipeInfo = (recipeData) => {
+        let isLiked = typeof recipeData.isLiked=='boolean'? recipeData.isLiked :null;
+        let isOwned = typeof recipeData.isLiked=='boolean'? recipeData.isOwned :null;
+        setRecipeInfo(oldRecipe=>({
+            recipe:recipeData.recipe,
+            isLiked,
+            isOwned 
+        }));
     }
 
     return (
