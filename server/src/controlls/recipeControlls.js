@@ -58,7 +58,7 @@ recipeRouter.post('/comment/:recipieId',isAuth(),async(req,res)=>{
 try{
         const comment = await createComment(req.body,req.user._id);
        const recipe= await attachComment(comment,req.params.recipieId)
-      res.status(201).json({comment,username:req.user.username})
+      res.status(201).json(comment)
     }catch(err){
        res.status(400).json({message:err.message})
    }

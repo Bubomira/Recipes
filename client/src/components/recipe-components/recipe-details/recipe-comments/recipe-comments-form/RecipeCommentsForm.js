@@ -1,8 +1,15 @@
-import {useState} from 'react'
+import {useState,useContext} from 'react'
+
+import RecipeContext from '../../../../../contexts/RecipeContext'
+import AuthContext from '../../../../../contexts/AuthContext'
+
+import {postComment} from '../../../../../services/commentService'
 
 import './RecipeCommentsForm.css'
 
 export default function RecipeCommentsForm(){
+  const{recipeInfo,addComment} = useContext(RecipeContext)
+  const {user} = useContext(AuthContext)
   let [content,setContent ] =useState('')
 
   const onChangeHandler = (e)=>{
@@ -10,7 +17,13 @@ export default function RecipeCommentsForm(){
   }
   const onSubmitHandler=(e)=>{
     e.preventDefault();
-    console.log(content)
+    postComment(recipeInfo.recipe._id,{content:content, username:user.username})
+    .then(comment=>{
+      setContent(oldContent=>'')
+      addComment(comment)
+      
+    })
+    
   }
     return(
     <div className='comment-container'>

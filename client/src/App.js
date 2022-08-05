@@ -42,11 +42,20 @@ function App() {
             isOwned 
         }));
     }
+    const addComment = (comment)=>{
+        let comments = recipeInfo.recipe.comments;
+        comments.push(comment)
+        setRecipeInfo(oldRecipeInfo=>({
+            ...oldRecipeInfo, 
+            [oldRecipeInfo.recipe.comments]:comments
+        }
+        ))
+    }
 
     return (
         <>
             <AuthContext.Provider value={{ user: user, loginUser, logoutUser }}>
-                <RecipeContext.Provider value={{ recipeInfo: recipeInfo, setDetailedRecipeInfo }}>
+                <RecipeContext.Provider value={{ recipeInfo: recipeInfo, setDetailedRecipeInfo,addComment }}>
                     <Navigation />
                     <Routes>
                         <Route path='/details/:recipeId' element={<Details />} />
