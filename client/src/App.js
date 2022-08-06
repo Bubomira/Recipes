@@ -19,6 +19,7 @@ import UserProfile from './components/user-profile/UserProfile'
 import LikedRecipies from './components/recipe-components/liked-recipes/LikedRecipes'
 import OwnedRecepies from './components/recipe-components/owned-recipes/OwnedRecipies'
 import Home from './components/home/Home'
+import NotFound from './components/404/NotFound'
 
 
 function App() {
@@ -90,6 +91,7 @@ function App() {
                 <RecipeContext.Provider value={{ recipeInfo: recipeInfo, setDetailedRecipeInfo,addComment,addLikeToRecipe,addDislikeToRecipe }}>
                     <Navigation />
                     <Routes>
+                    <Route path='*' element={<NotFound />} />
                         <Route path='/details/:recipeId' element={<Details />} />
                         <Route path='/editRecipe/:recipeId' element={<EditRecipe />} />
                         <Route path='/' element={<Home />} />
