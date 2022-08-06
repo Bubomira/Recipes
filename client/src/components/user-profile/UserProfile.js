@@ -1,9 +1,25 @@
-import { createContext } from 'react'
+import { useState,useEffect } from 'react'
 import { Link } from 'react-router-dom'
+
+import { getProfile } from '../../services/userService'
 
 import './UserProfile.css'
 
 export default function UserProfile() {
+    let [profile,setProfile] = useState({
+        username:'',
+        email:''
+    })
+
+    useEffect(()=>{
+        getProfile().then(profileData=>{
+            setProfile(profileData)
+        })
+
+    },[])
+
+
+    
     return (
         <div className="wrapper-profile">
         <div className="profile-container">
@@ -14,14 +30,14 @@ export default function UserProfile() {
                     width={150}
                 />
             </div>
-            <h3>Username: Mariya </h3>
-            <h3>Email: mariya@abv.bg </h3>
+            <h3>Username: {profile.username} </h3>
+            <h3>Email: {profile.email} </h3>
             <p>
                 
-                <Link to={'/likedRecepies/userId'}>liked recepies</Link>
+                <Link to={`/likedRecepies/${profile._id}`}>liked recepies</Link>
             </p>
             <p>
-                <Link to={'/ownedRecipies/userId'}>owned recepies</Link>
+                <Link to={`/ownedRecipies/${profile._id}`}>owned recepies</Link>
             </p>
         </div>
      </div>
