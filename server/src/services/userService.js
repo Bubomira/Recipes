@@ -1,7 +1,7 @@
 const User = require('../models/User')
 
 module.exports.findUser= async(id)=>{
-    return User.findById(id).populate('likedRecipies').populate('ownedRecipies');
+    return User.findById(id);
 }
 
 module.exports.addRecipeToLiked = async(id,recipe)=>{
@@ -15,10 +15,10 @@ module.exports.addRecipeToLiked = async(id,recipe)=>{
 
 module.exports.removeRecipeFromLiked = async(id,recipe)=>{
     const user = await User.findById(id);
-    if(!user.likedRecipies.includes(recipe._id)){
+    if(!user.likedRecipies.includes(recipe._id.toString())){
         throw new Error('You cant dislike a recipe u havent liked!')
     }
-    user.likedRecipies = user.likedRecipies.filter(x=>x==recipe._id);
+    user.likedRecipies = user.likedRecipies.filter(x=>x.toString()!=recipe._id);
     await user.save();
 }
 module.exports.addRecipeToOwned= async(id,recipe)=>{
