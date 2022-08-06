@@ -27,7 +27,7 @@ module.exports.addRecipeToOwned= async(id,recipe)=>{
     await user.save();
 }
  module.exports.getLikedRecepies =async(id)=>{
-    const user = await User.findById(id).populate('likedRecepies')
+    const user = await User.findById(id).populate('likedRecipies')
     return user.likedRecipies;
  }
 
