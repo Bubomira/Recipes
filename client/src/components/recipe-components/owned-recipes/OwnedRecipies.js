@@ -1,6 +1,6 @@
-import { useParams } from 'react-router-dom';
+import { useState, useEffect,useContext } from 'react'
 
-import { useState, useEffect } from 'react'
+import AuthContext from '../../../contexts/AuthContext'
 
 import { getOwnedRecipes } from '../../../services/userService'
 
@@ -9,14 +9,14 @@ import RecipeCard from '../recipe-card/RecipeCard';
 import './OwnedRecipies.css'
 
 export default function OwnedRecipies() {
-    const { userId } = useParams()
+    const { user } = useContext(AuthContext)
     let [userOwnedRecipes, setUserOwnedRecipes] = useState([]);
     useEffect(() => {
-        getOwnedRecipes(userId).then(ownedRecipes => {
+        getOwnedRecipes(user._id).then(ownedRecipes => {
             setUserOwnedRecipes(ownedRecipes)
         })
 
-    }, [userId])
+    }, [])
     return (
         <div className='owned-container'>
             {userOwnedRecipes.length == 0 ?

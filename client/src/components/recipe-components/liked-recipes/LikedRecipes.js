@@ -1,6 +1,6 @@
-import { useParams } from 'react-router-dom';
+import { useState, useEffect,useContext } from 'react'
 
-import { useState, useEffect } from 'react'
+import AuthContext from '../../../contexts/AuthContext'
 
 import { getLikedRecipes } from '../../../services/userService';
 
@@ -9,10 +9,10 @@ import RecipeCard from '../recipe-card/RecipeCard';
 import './LikedRecipies.css'
 
 export default function LikedRecipes() {
-    const { userId } = useParams()
+    const { user } = useContext(AuthContext)
     let [userLikedRecipes, setUserLikedRecipes] = useState([]);
     useEffect(() => {
-        getLikedRecipes(userId).then((likedRecipes) => {
+        getLikedRecipes(user._id).then((likedRecipes) => {
             setUserLikedRecipes(likedRecipes)
         })
     }, [])
