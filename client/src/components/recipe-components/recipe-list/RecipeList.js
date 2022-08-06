@@ -15,11 +15,14 @@ export default function RecipeList() {
         })
 
     }, [])
+     const filterRecipes = (filteredRecipes)=>{
+        setAllRecipes(filteredRecipes)
+     }
 
     return (
         <div className="details-wrapper">
             <div className="container">
-                <RecipeSearch />
+                <RecipeSearch  filterRecipes={filterRecipes}/>
                 <div className="row">
                     {allRecipes.length==0 ?
                         <h2 className="no-recipes"> No recipes in database</h2>

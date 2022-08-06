@@ -18,5 +18,7 @@ export const likeRecipe =async(id)=>await get(`${baseURL}/likeRecipe/${id}`)
 
 export const dislikeRecipe =async(id)=>await get(`${baseURL}/dislikeRecipe/${id}`)
 
+export const searchRecipe =async(data)=>await post(`${baseURL}/catalog/search`,data)
+
 
  
