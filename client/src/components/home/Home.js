@@ -1,5 +1,7 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect,useContext } from 'react'
 import { Link } from 'react-router-dom'
+
+import AuthContext from '../../contexts/AuthContext'
 
 import RecipeHomeCard from '../recipe-components/recipe-home-card/RecipeHomeCard'
 
@@ -8,6 +10,7 @@ import { getLatestRecipes } from '../../services/recipeService'
 import './Home.css'
 
 export default function Home() {
+    const {user} = useContext(AuthContext)
     const [recipes, setRecipes] = useState([])
     useEffect(() => {
         getLatestRecipes().then(recipes => {
@@ -26,12 +29,16 @@ export default function Home() {
                     recipes.map(x => <RecipeHomeCard key={x._id} recipe={x} />)
                 }
             </section>
+            {user.username?
+            <p className="get-started"> Hello, {user.username}</p>
+            :
             <p className="get-started">
                 Lets get started:
                 <Link to='/login'>  Sign in </Link>
                 or
                 <Link to='/register'>  Sign up </Link>
             </p>
+            }
         </div>
     )
 }
