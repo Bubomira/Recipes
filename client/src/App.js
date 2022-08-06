@@ -3,6 +3,7 @@ import { Routes, Route } from 'react-router-dom'
 
 import AuthContext from './contexts/AuthContext'
 import RecipeContext from './contexts/RecipeContext'
+import LoadingContext from './contexts/LoadingContext'
 
 import useLokalStorageAuth from './hooks/useLokalStorageAuth'
 
@@ -29,6 +30,10 @@ function App() {
     let [user, setUser] = useLokalStorageAuth({});
     const loginUser = (newUser) => {
         setUser(newUser);
+    }
+    let [loader,setLoader]=useState(false)
+    const setNewLoader=()=>{
+        setLoader(oldState=>!oldState)
     }
     const logoutUser = () => {
         setUser({})
@@ -80,6 +85,7 @@ function App() {
 
     return (
         <>
+        <LoadingContext.Provider value={{loader:loader, setNewLoader}}>
             <AuthContext.Provider value={{ user: user, loginUser, logoutUser }}>
                 <RecipeContext.Provider value={{ recipeInfo: recipeInfo, setDetailedRecipeInfo,addComment,addLikeToRecipe,addDislikeToRecipe }}>
                     <Navigation />
@@ -98,6 +104,7 @@ function App() {
                     </Routes>
                 </RecipeContext.Provider>
             </AuthContext.Provider>
+         </LoadingContext.Provider>
         </>
 
     );
