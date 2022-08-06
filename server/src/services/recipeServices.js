@@ -38,7 +38,6 @@ module.exports.editRecipe = async(id,data)=>{
   recipe.type=data.type ;
   recipe.steps=data.steps;
   recipe.imageUrl =data.imageUrl;
-  recipe.likes = data.likes;
     await recipe.save();
     return recipe;
 }
