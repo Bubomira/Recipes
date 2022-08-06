@@ -15,7 +15,7 @@ export default function LikedRecipes() {
         getLikedRecipes(userId).then((likedRecipes) => {
             setUserLikedRecipes(likedRecipes)
         })
-    }, [userId])
+    }, [])
 
     return (
         <div className='liked-container'>

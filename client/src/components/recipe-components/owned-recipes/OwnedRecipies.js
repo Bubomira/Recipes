@@ -1,17 +1,36 @@
-import './OwnedRecipies.css'
+import { useParams } from 'react-router-dom';
+
+import { useState, useEffect } from 'react'
+
+import { getOwnedRecipes } from '../../../services/userService'
+
 import RecipeCard from '../recipe-card/RecipeCard';
 
-export default function OwnedRecipies(){
-    return(
+import './OwnedRecipies.css'
+
+export default function OwnedRecipies() {
+    const { userId } = useParams()
+    let [userOwnedRecipes, setUserOwnedRecipes] = useState([]);
+    useEffect(() => {
+        getOwnedRecipes(userId).then(ownedRecipes => {
+            setUserOwnedRecipes(ownedRecipes)
+        })
+
+    }, [userId])
+    return (
         <div className='owned-container'>
-            {/*When user hasnt posted any recipes
-             <h3 className="owned-msg">You havent liked any recepies yet</h3> 
-             */}
-         <h3 className="owned-msg">These are the recepies you have posted: </h3>
-        <div className='row'>
-              <RecipeCard recipe={{ title: 'cupcake', imageUrl: 'https://th.bing.com/th/id/OIP.7Vevs1uLCTIeuQtCicWz7gHaEo?pid=ImgDet&rs=1', _id: 1 }} />
-              <RecipeCard recipe={{ title: 'cupcake', imageUrl: 'https://www.primrose-bakery.co.uk/shop/content/images/thumbs/0001934_eton-mess-cupcake.jpeg', _id: 1 }} /> 
-        </div>
+            {userOwnedRecipes.length == 0 ?
+                <h3 className="owned-msg">You havent posted any recepies yet</h3>
+                :
+                <>
+                    <h3 className="owned-msg">These are the recepies you have posted: </h3>
+                    <div className='row'>
+                        {userOwnedRecipes?.map(x=><RecipeCard key={x._id}  recipe={x}/>)}
+                    </div>
+                </>
+
+            }
+
 
         </div>
     )
