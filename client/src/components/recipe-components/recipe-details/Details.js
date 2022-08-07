@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 
-import RecipeContext from '../../../contexts/RecipeContext'
+import {RecipeContext} from '../../../contexts/RecipeContext'
 import LoadingContext from '../../../contexts/LoadingContext'
 import {AuthContext} from '../../../contexts/AuthContext'
 

@@ -1,7 +1,7 @@
 import {useState,useContext,useEffect} from 'react';
 import { useNavigate,useParams } from 'react-router-dom';
 
-import RecipeContext from '../../../contexts/RecipeContext'
+import {RecipeContext} from '../../../contexts/RecipeContext'
 
 import {getOneRecipe,editRecipe} from '../../../services/recipeService'
 

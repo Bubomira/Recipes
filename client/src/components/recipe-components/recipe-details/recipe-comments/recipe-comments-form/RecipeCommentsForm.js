@@ -1,6 +1,6 @@
 import {useState,useContext} from 'react'
 
-import RecipeContext from '../../../../../contexts/RecipeContext'
+import {RecipeContext} from '../../../../../contexts/RecipeContext'
 import {AuthContext} from '../../../../../contexts/AuthContext'
 
 import {postComment} from '../../../../../services/commentService'

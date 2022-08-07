@@ -2,10 +2,9 @@ import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import {AuthProvider} from './contexts/AuthContext'
-import RecipeContext from './contexts/RecipeContext'
+import {RecipeProvider} from './contexts/RecipeContext'
 import LoadingContext from './contexts/LoadingContext'
 
-import useLokalStorageAuth from './hooks/useLokalStorageAuth'
 
 import Register from './components/auth-components/register/Register'
 import Login from './components/auth-components/login/Login'
@@ -23,66 +22,15 @@ import NotFound from './components/404/NotFound'
 
 
 function App() {
-    let [recipeInfo, setRecipeInfo] = useState({
-        recipe:{},
-        isOwner:null,
-        isLiked:null
-    })
-   
     let [loader,setLoader]=useState(false)
     const setNewLoader=()=>{
         setLoader(oldState=>!oldState)
     }
-    const setDetailedRecipeInfo = (recipeData) => {
-        let isLiked = typeof recipeData.isLiked=='boolean'? recipeData.isLiked :null;
-        let isOwned = typeof recipeData.isLiked=='boolean'? recipeData.isOwned :null;
-        setRecipeInfo(oldRecipe=>({
-            recipe:recipeData.recipe,
-            isLiked,
-            isOwned 
-        }));
-    }
-    const addComment = (comment)=>{
-        let comments = recipeInfo.recipe.comments;
-        comments.push(comment)
-        setRecipeInfo(oldRecipeInfo=>({
-            ...oldRecipeInfo, 
-            [oldRecipeInfo.recipe.comments]:comments
-        }
-        ))
-    }
-
-    const addLikeToRecipe=()=>{
-        let newLikes = recipeInfo.recipe.likes;
-        newLikes++;
-        setRecipeInfo(oldRecipeInfo=>({
-            ...oldRecipeInfo,
-            isLiked:true,
-            recipe:{
-                ...oldRecipeInfo.recipe,
-                likes:newLikes,
-                
-            }            
-        }))
-    }
-    const addDislikeToRecipe=()=>{
-        let newLikes = recipeInfo.recipe.likes;
-        newLikes--;
-        setRecipeInfo(oldRecipeInfo=>({
-            ...oldRecipeInfo,
-            isLiked:false,
-            recipe:{
-                ...oldRecipeInfo.recipe,
-               likes :newLikes,
-            }      
-        }))
-    }
-
     return (
         <>
         <LoadingContext.Provider value={{loader:loader, setNewLoader}}>
             <AuthProvider>
-                <RecipeContext.Provider value={{ recipeInfo: recipeInfo, setDetailedRecipeInfo,addComment,addLikeToRecipe,addDislikeToRecipe }}>
+                <RecipeProvider>
                     <Navigation />
                     <Routes>
                     <Route path='*' element={<NotFound />} />
@@ -98,7 +46,7 @@ function App() {
                         <Route path='/ownedRecipies/:userId' element={<OwnedRecepies />} />
                         <Route path='/logout' element={<Logout />} />
                     </Routes>
-                </RecipeContext.Provider>
+                </RecipeProvider>
             </AuthProvider>
          </LoadingContext.Provider>
         </>
