@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import AuthContext from './contexts/AuthContext'
+import {AuthProvider} from './contexts/AuthContext'
 import RecipeContext from './contexts/RecipeContext'
 import LoadingContext from './contexts/LoadingContext'
 
@@ -28,16 +28,10 @@ function App() {
         isOwner:null,
         isLiked:null
     })
-    let [user, setUser] = useLokalStorageAuth({});
-    const loginUser = (newUser) => {
-        setUser(newUser);
-    }
+   
     let [loader,setLoader]=useState(false)
     const setNewLoader=()=>{
         setLoader(oldState=>!oldState)
-    }
-    const logoutUser = () => {
-        setUser({})
     }
     const setDetailedRecipeInfo = (recipeData) => {
         let isLiked = typeof recipeData.isLiked=='boolean'? recipeData.isLiked :null;
@@ -87,7 +81,7 @@ function App() {
     return (
         <>
         <LoadingContext.Provider value={{loader:loader, setNewLoader}}>
-            <AuthContext.Provider value={{ user: user, loginUser, logoutUser }}>
+            <AuthProvider>
                 <RecipeContext.Provider value={{ recipeInfo: recipeInfo, setDetailedRecipeInfo,addComment,addLikeToRecipe,addDislikeToRecipe }}>
                     <Navigation />
                     <Routes>
@@ -105,7 +99,7 @@ function App() {
                         <Route path='/logout' element={<Logout />} />
                     </Routes>
                 </RecipeContext.Provider>
-            </AuthContext.Provider>
+            </AuthProvider>
          </LoadingContext.Provider>
         </>
 

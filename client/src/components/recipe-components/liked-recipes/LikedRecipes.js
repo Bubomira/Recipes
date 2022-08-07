@@ -1,6 +1,6 @@
 import { useState, useEffect,useContext } from 'react'
 
-import AuthContext from '../../../contexts/AuthContext'
+import {AuthContext} from '../../../contexts/AuthContext'
 import LoadingContext from '../../../contexts/LoadingContext'
 
 import { getLikedRecipes } from '../../../services/userService';

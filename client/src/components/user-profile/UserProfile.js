@@ -32,12 +32,11 @@ export default function UserProfile() {
             </div>
             <h3>Username: {profile.username} </h3>
             <h3>Email: {profile.email} </h3>
-            <p>
-                
+            <p className="liked-owned-message">
                 <Link to={`/likedRecepies/${profile._id}`}>liked recepies</Link>
             </p>
-            <p>
-                <Link to={`/ownedRecipies/${profile._id}`}>owned recepies</Link>
+            <p className='liked-owned-message'>
+                <Link  to={`/ownedRecipies/${profile._id}`}>owned recepies</Link>
             </p>
         </div>
      </div>

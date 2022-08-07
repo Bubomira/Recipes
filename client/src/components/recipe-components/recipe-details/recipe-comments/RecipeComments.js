@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 
-import AuthContext from '../../../../contexts/AuthContext'
+import {AuthContext} from '../../../../contexts/AuthContext'
 
 import RecipeCommentsForm from './recipe-comments-form/RecipeCommentsForm'
 import RecipeCommentsSection from './recipe-comments-section/RecipeCommentsSection'

@@ -50,10 +50,13 @@ h3 {
   letter-spacing: 1px;
   margin-bottom: 25px
 }
-p {
+.liked-owned-message {
   font-size: 20px;
   line-height: 1;
   margin-bottom: 15px;
-  color: #666;
+  background-color: #45818e;
+  margin-left:70px;
+  margin-right:70px;
 }
+
  

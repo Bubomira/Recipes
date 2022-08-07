@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { Link } from 'react-router-dom'
 
-import AuthContext from '../../contexts/AuthContext'
+import {AuthContext} from '../../contexts/AuthContext'
 import LoadingContext from '../../contexts/LoadingContext'
 
 import RecipeHomeCard from '../recipe-components/recipe-home-card/RecipeHomeCard'
