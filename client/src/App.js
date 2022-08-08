@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
-import {AuthProvider} from './contexts/AuthContext'
-import {RecipeProvider} from './contexts/RecipeContext'
+import { AuthProvider } from './contexts/AuthContext'
+import { RecipeProvider } from './contexts/RecipeContext'
 import LoadingContext from './contexts/LoadingContext'
 
 
@@ -20,35 +20,42 @@ import OwnedRecepies from './components/recipe-components/owned-recipes/OwnedRec
 import Home from './components/home/Home'
 import NotFound from './components/404/NotFound'
 
+import UserGuard from './components/guards/user-guard/UserGuard'
+import GuestGuard from './components/guards/guest-guard/GuestGuard'
+
 
 function App() {
-    let [loader,setLoader]=useState(false)
-    const setNewLoader=()=>{
-        setLoader(oldState=>!oldState)
+    let [loader, setLoader] = useState(false)
+    const setNewLoader = () => {
+        setLoader(oldState => !oldState)
     }
     return (
         <>
-        <LoadingContext.Provider value={{loader:loader, setNewLoader}}>
-            <AuthProvider>
-                <RecipeProvider>
-                    <Navigation />
-                    <Routes>
-                    <Route path='*' element={<NotFound />} />
-                        <Route path='/details/:recipeId' element={<Details />} />
-                        <Route path='/editRecipe/:recipeId' element={<EditRecipe />} />
-                        <Route path='/' element={<Home />} />
-                        <Route path='/register' element={<Register />} />
-                        <Route path='/login' element={<Login />} />
-                        <Route path='/recipeCatalog' element={<RecipeList />} />
-                        <Route path='/createRecipe' element={<CreateRecipe />} />
-                        <Route path='/profile' element={<UserProfile />} />
-                        <Route path='/likedRecepies/:userId' element={<LikedRecipies />} />
-                        <Route path='/ownedRecipies/:userId' element={<OwnedRecepies />} />
-                        <Route path='/logout' element={<Logout />} />
-                    </Routes>
-                </RecipeProvider>
-            </AuthProvider>
-         </LoadingContext.Provider>
+            <LoadingContext.Provider value={{ loader: loader, setNewLoader }}>
+                <AuthProvider>
+                    <RecipeProvider>
+                        <Navigation />
+                        <Routes>
+                            <Route path='*' element={<NotFound />} />
+                            <Route path='/details/:recipeId' element={<Details />} />
+                            <Route path='/' element={<Home />} />
+                            <Route path='/recipeCatalog' element={<RecipeList />} />
+                            <Route element={<UserGuard />}>
+                                <Route path='/editRecipe/:recipeId' element={<EditRecipe />} />
+                                <Route path='/createRecipe' element={<CreateRecipe />} />
+                                <Route path='/profile' element={<UserProfile />} />
+                                <Route path='/logout' element={<Logout />} />
+                                <Route path='/likedRecepies/:userId' element={<LikedRecipies />} />
+                                <Route path='/ownedRecipies/:userId' element={<OwnedRecepies />} />
+                            </Route>
+                            <Route element={<GuestGuard/>}>
+                            <Route path='/register' element={<Register />} />
+                            <Route path='/login' element={<Login />} />
+                             </Route>
+                        </Routes>
+                    </RecipeProvider>
+                </AuthProvider>
+            </LoadingContext.Provider>
         </>
 
     );
