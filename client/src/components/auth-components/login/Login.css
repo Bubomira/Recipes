@@ -25,8 +25,8 @@
       width: 200px;
       height: 80px;
       margin: auto;
-      margin-bottom: 50px;
-      line-height: 100px;
+      margin-bottom: 30px;
+      line-height: 50px;
     }
     
     .login-form .item{
@@ -59,6 +59,14 @@
     a{
       color: #7e86d6;
     }
+.login-error{
+      color: #B3060A;
+      font-size:23px;
+      font-weight:500;
+      padding-bottom: 20px;
+      margin-top:-40px;
+
+}
     
      
   
