@@ -1,9 +1,9 @@
 import { useContext, useEffect } from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams,Navigate, useNavigate } from 'react-router-dom'
 
-import {RecipeContext} from '../../../contexts/RecipeContext'
+import { RecipeContext } from '../../../contexts/RecipeContext'
 import LoadingContext from '../../../contexts/LoadingContext'
-import {AuthContext} from '../../../contexts/AuthContext'
+import { AuthContext } from '../../../contexts/AuthContext'
 
 import { getOneRecipe } from '../../../services/recipeService'
 
@@ -14,6 +14,7 @@ import RecipeDetailsButtons from './recipe-details-buttons/RecipeDetailsButtons'
 import './Details.css'
 
 export default function Details() {
+	const navigate = useNavigate()
 	const { loader, setNewLoader } = useContext(LoadingContext)
 	const { recipeInfo, setDetailedRecipeInfo } = useContext(RecipeContext);
 	const { user } = useContext(AuthContext)
@@ -25,8 +26,13 @@ export default function Details() {
 			setTimeout(()=>{
 				setNewLoader()
 			},25)
+
+		}).catch(()=>{
+			setNewLoader()	
+			navigate('/404',{replace:true})
 		})
-	}, [recipeId, user])
+	},[recipeId, user])
+
 
 	return (
 		<>

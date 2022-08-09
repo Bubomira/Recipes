@@ -23,8 +23,12 @@ const requester = async (method, url, data) => {
         })
     }
     const response = await request;
-    const result = response.json()
-    return result;
+    if(response.ok){
+        const result = response.json()
+        return result;
+    }
+        const error = await response.json();
+        throw new Error(error.message)
 }
 
 
