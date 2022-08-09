@@ -16,7 +16,7 @@
       box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.075);
 }
     
-h1{
+.create-form h1{
     text-align: center;   
       border-radius: 15px;
       font-size: 33px;
@@ -55,4 +55,16 @@ label{
    font-size:17px;
    color: #7e86d6;
    font-weight:500;
+}
+
+.create-recipe-error {
+  text-align: left;
+  color: #B3060A;
+  font-size: 15px;
+  font-weight: 500;
+  padding-bottom: 20px;
+  line-height: 1.5;
+  margin-top:-15px;
+  margin-left:5px;
+
 }
