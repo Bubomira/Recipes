@@ -10,6 +10,7 @@ import './Register.css'
 export default function Register() {
     const navigate = useNavigate();
     const {loginUser} = useContext(AuthContext)
+    let [error,setError] = useState('')
 
     let [values, setValues] = useState({
         username: '',
@@ -28,6 +29,8 @@ export default function Register() {
         register(values).then(userData => {
             loginUser(userData);
             navigate('/')
+        }).catch((err)=>{
+            setError(err.message)
         })
 
     }
@@ -37,6 +40,9 @@ export default function Register() {
             <div className="registration-form">
                 <form onSubmit={onSubmitHandler}>
                     <h1 >Register</h1 >
+                    {error &&
+                       <p className='register-error'>{error}</p>
+                    }
                     <div className="form-group">
                         <input
                             type="text"
