@@ -1,18 +1,16 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
 
+import useRecipeValidator from '../../../hooks/useRecipeValidator'
+
 import { createRecipe } from '../../../services/recipeService';
 
 import './CreateRecipe.css'
 
 export default function CreateRecipe() {
+    const [errors,lengthValidator,imageUrlValidator] = useRecipeValidator()
     const navigate = useNavigate()
-    let [errors, setErrors] = useState({
-        title: '',
-        ingridients: '',
-        imageUrl: '',
-        steps: ''
-    })
+   
     let [values, setValues] = useState({
         title: '',
         ingridients: '',
@@ -35,18 +33,6 @@ export default function CreateRecipe() {
         })
     }
 
-    const lengthValidator = (e, minLength) => {
-        setErrors(oldErrors => ({
-            ...oldErrors,
-            [e.target.name]: values[e.target.name].length < minLength
-        }))
-    }
-    const imageUrlValidator = () => {
-        setErrors(oldErrors => ({
-            ...oldErrors,
-            imageUrl: !values.imageUrl.startsWith('https://')
-        }))
-    }
 
     return (
         <div className='wrapper'>
@@ -89,7 +75,7 @@ export default function CreateRecipe() {
                             name="imageUrl"
                             value={values.imageUrl}
                             onChange={onChangeHandler}
-                            onBlur={imageUrlValidator}
+                            onBlur={(e)=>imageUrlValidator(e)}
                         />
                         {errors.imageUrl &&
                             <p className='create-recipe-error'>Image url should start with https://</p>

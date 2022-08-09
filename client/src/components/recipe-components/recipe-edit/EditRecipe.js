@@ -6,10 +6,13 @@ import { AuthContext } from '../../../contexts/AuthContext';
 
 import { getOneRecipe, editRecipe } from '../../../services/recipeService'
 
+import useRecipeValidator from '../../../hooks/useRecipeValidator'
+
 import './EditRecipe.css'
 
 export default function EditRecipe() {
     const { setDetailedRecipeInfo, recipeInfo } = useContext(RecipeContext);
+    const [errors,lengthValidator,imageUrlValidator] = useRecipeValidator()
     const {user } = useContext(AuthContext)
     const navigate = useNavigate();
     const { recipeId } = useParams()
@@ -37,6 +40,8 @@ export default function EditRecipe() {
         e.preventDefault();
         editRecipe(recipeInfo.recipe._id, values).then(() => {
             navigate(`/details/${recipeInfo.recipe._id}`)
+        }).catch(()=>{
+            navigate('/404')
         })
     }
 
@@ -57,7 +62,11 @@ export default function EditRecipe() {
                             name="title"
                             value={values.title}
                             onChange={onChangeHandler}
+                            onBlur={(e)=>lengthValidator(e,3)}
                         />
+                         {errors.title &&
+                            <p className='edit-recipe-error'>Title should be at least 3 characters</p>
+                        }
                     </div>
                     <div className="form-group">
                         <input
@@ -67,7 +76,11 @@ export default function EditRecipe() {
                             name="ingridients"
                             value={values.ingridients}
                             onChange={onChangeHandler}
+                        onBlur={(e)=>lengthValidator(e,10)}
                         />
+                         {errors.ingridients &&
+                            <p className='edit-recipe-error'>ingridients should be at least 10 characters </p>
+                        }
                     </div>
                     <div className="form-group">
                         <input
@@ -77,7 +90,11 @@ export default function EditRecipe() {
                             name="imageUrl"
                             value={values.imageUrl}
                             onChange={onChangeHandler}
+                            onBlur={(e)=>imageUrlValidator(e)}
                         />
+                         {errors.imageUrl &&
+                            <p className='edit-recipe-error'>Image url should start with https://</p>
+                        }
                     </div>
                     <div className="form-group">
                         <textarea
@@ -86,7 +103,11 @@ export default function EditRecipe() {
                             name="steps"
                             value={values.steps}
                             onChange={onChangeHandler}
+                            onBlur={(e)=>lengthValidator(e,15)}
                         />
+                        {errors.steps &&
+                            <p className='edit-recipe-error'>Steps to prepare should be at least 15 characters</p>
+                        }
                     </div>
                     <div >
                         <label htmlFor='dish'> Dish: </label>
@@ -111,7 +132,11 @@ export default function EditRecipe() {
                         />
                     </div>
                     <div className="form-group">
-                        <button type="submit" className="edit-recipe">
+                        <button
+                         type="submit"
+                         className="edit-recipe"
+                         disabled={Object.values(values).some(x=>x=='')||Object.values(errors).some(x=>x==true)}
+                         >
                             Submit changes
                         </button>
                     </div>

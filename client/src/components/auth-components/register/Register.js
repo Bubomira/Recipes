@@ -42,7 +42,6 @@ export default function Register() {
                 }))
             })
         }
-
     const usernameValidator = () => {
         setErrors(oldErrors => ({
             ...oldErrors,
