@@ -48,10 +48,10 @@ function App() {
                                 <Route path='/likedRecepies/:userId' element={<LikedRecipies />} />
                                 <Route path='/ownedRecipies/:userId' element={<OwnedRecepies />} />
                             </Route>
-                            <Route element={<GuestGuard/>}>
-                            <Route path='/register' element={<Register />} />
-                            <Route path='/login' element={<Login />} />
-                             </Route>
+                            <Route element={<GuestGuard />}>
+                                <Route path='/register' element={<Register />} />
+                                <Route path='/login' element={<Login />} />
+                            </Route>
                         </Routes>
                     </RecipeProvider>
                 </AuthProvider>
