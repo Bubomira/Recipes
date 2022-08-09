@@ -5,6 +5,8 @@ const {findUser,getLikedRecepies,getOwnedRecipes} = require('../services/userSer
 
 const {isAuth} = require('../middlewares/guards')
 
+const errorMapper = require('../utils/errorMapper')
+
 userRouter.post('/login',async(req,res)=>{
   try{
     const userSessionData = await loginUser(req.body);
@@ -20,7 +22,8 @@ userRouter.post('/register',async(req,res)=>{
     const userSessionData =await registerUser(req.body)
     res.status(201).json(userSessionData)
     }catch(err){
-     res.status(400).json({message:err.message})
+      const message = errorMapper(err)
+     res.status(400).json({message:message})
     }
    
 })
