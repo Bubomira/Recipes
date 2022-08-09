@@ -20,8 +20,7 @@ export default function RecipeCommentsForm(){
     postComment(recipeInfo.recipe._id,{content:content, username:user.username})
     .then(comment=>{
       setContent(oldContent=>'')
-      addComment(comment)
-      
+      addComment(comment) 
     })
     
   }
@@ -41,7 +40,11 @@ export default function RecipeCommentsForm(){
         />
       </div>
       <div className="form-group">
-        <button type="submit" className="add-comment">
+        <button
+         type="submit" 
+         className="add-comment"
+         disabled={content.length<3}
+         >
          Add comment
         </button>
       </div>
