@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
+import { useParams,useNavigate } from 'react-router-dom';
 
-import {AuthContext} from '../../../contexts/AuthContext'
 import LoadingContext from '../../../contexts/LoadingContext'
 
 import { getOwnedRecipes } from '../../../services/userService'
@@ -11,22 +11,24 @@ import './OwnedRecipies.css'
 import Loader from '../../loader/Loader';
 
 export default function OwnedRecipies() {
-    const { loader,setNewLoader } = useContext(LoadingContext)
-    const { user } = useContext(AuthContext)
+    const navigate = useNavigate()
+    const { loader, setNewLoader } = useContext(LoadingContext)
+    const { userId } = useParams()
     let [userOwnedRecipes, setUserOwnedRecipes] = useState([]);
     useEffect(() => {
         setNewLoader()
-        getOwnedRecipes(user._id).then(ownedRecipes => {
+        getOwnedRecipes(userId).then(ownedRecipes => {
             setUserOwnedRecipes(ownedRecipes)
-            setTimeout(() => {
-                setNewLoader()
-            }, 25)
+                setNewLoader()   
+        }).catch(()=>{
+            setNewLoader()
+            navigate('/404',{replace:true})
         })
 
     }, [])
     return (
         <>
-            {loader?
+            {loader ?
                 <Loader /> :
                 <div className='owned-container'>
                     {userOwnedRecipes.length == 0 ?
