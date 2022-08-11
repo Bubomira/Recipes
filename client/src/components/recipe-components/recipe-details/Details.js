@@ -2,8 +2,9 @@ import { useContext, useEffect } from 'react'
 import { useParams,Navigate, useNavigate } from 'react-router-dom'
 
 import { RecipeContext } from '../../../contexts/RecipeContext'
-import LoadingContext from '../../../contexts/LoadingContext'
 import { AuthContext } from '../../../contexts/AuthContext'
+
+import useLoader from '../../../hooks/useLoader'
 
 import { getOneRecipe } from '../../../services/recipeService'
 
@@ -15,18 +16,14 @@ import './Details.css'
 
 export default function Details() {
 	const navigate = useNavigate()
-	const { loader, setNewLoader } = useContext(LoadingContext)
+	const [ loader, setNewLoader ] = useLoader();
 	const { recipeInfo, setDetailedRecipeInfo } = useContext(RecipeContext);
 	const { user } = useContext(AuthContext)
 	const { recipeId } = useParams();
 	useEffect(() => {
-		setNewLoader()
 		getOneRecipe(recipeId).then(recipeDetailed => {
 			setDetailedRecipeInfo(recipeDetailed)
-			setTimeout(()=>{
-				setNewLoader()
-			},25)
-
+			setNewLoader()
 		}).catch(()=>{
 			setNewLoader()	
 			navigate('/404',{replace:true})

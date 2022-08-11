@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 
-import LoadingContext from '../../../contexts/LoadingContext'
+import useLoader from '../../../hooks/useLoader'
 
 import { getLikedRecipes } from '../../../services/userService';
 import Loader from '../../loader/Loader';
@@ -12,14 +12,13 @@ import './LikedRecipies.css'
 
 export default function LikedRecipes() {
     const navigate = useNavigate();
-    const { loader, setNewLoader } = useContext(LoadingContext)
+    const [ loader, setNewLoader ] = useLoader()
     const { userId } = useParams()
     let [userLikedRecipes, setUserLikedRecipes] = useState([]);
     useEffect(() => {
-        setNewLoader();
         getLikedRecipes(userId).then((likedRecipes) => {
             setUserLikedRecipes(likedRecipes)
-                setNewLoader()
+             setNewLoader()
         }).catch(() => {
             navigate('/404', { replace: true })
             setNewLoader();

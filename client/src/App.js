@@ -1,10 +1,7 @@
-import { useState } from 'react'
 import { Routes, Route } from 'react-router-dom'
 
 import { AuthProvider } from './contexts/AuthContext'
 import { RecipeProvider } from './contexts/RecipeContext'
-import LoadingContext from './contexts/LoadingContext'
-
 
 import Register from './components/auth-components/register/Register'
 import Login from './components/auth-components/login/Login'
@@ -25,13 +22,9 @@ import GuestGuard from './components/guards/guest-guard/GuestGuard'
 
 
 function App() {
-    let [loader, setLoader] = useState(false)
-    const setNewLoader = () => {
-        setLoader(oldState => !oldState)
-    }
+ 
     return (
         <>
-            <LoadingContext.Provider value={{ loader: loader, setNewLoader }}>
                 <AuthProvider>
                     <RecipeProvider>
                         <Navigation />
@@ -55,7 +48,6 @@ function App() {
                         </Routes>
                     </RecipeProvider>
                 </AuthProvider>
-            </LoadingContext.Provider>
         </>
 
     );

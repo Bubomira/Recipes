@@ -1,8 +1,8 @@
-import { useState, useEffect, useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { useState, useEffect,useContext } from 'react'
+import { Link,useNavigate } from 'react-router-dom'
 
 import {AuthContext} from '../../contexts/AuthContext'
-import LoadingContext from '../../contexts/LoadingContext'
+import useLoader from '../../hooks/useLoader'
 
 import RecipeHomeCard from '../recipe-components/recipe-home-card/RecipeHomeCard'
 
@@ -12,16 +12,16 @@ import './Home.css'
 import Loader from '../loader/Loader'
 
 export default function Home() {
+    const navigate = useNavigate()
     const { user } = useContext(AuthContext)
-    const { loader,setNewLoader} = useContext(LoadingContext)
+    const [loader,setNewLoader] = useLoader()
     const [recipes, setRecipes] = useState([])
     useEffect(() => {
-        setNewLoader()
         getLatestRecipes().then(recipes => {
             setRecipes(recipes)
-            setTimeout(() => {
                 setNewLoader()
-            }, 25)
+        }).catch((err)=>{
+            navigate('/404',{replace:true})  
         })
     }, [])
     return (

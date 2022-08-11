@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from 'react'
 
-import LoadingContext from '../../../contexts/LoadingContext'
+import useLoader from '../../../hooks/useLoader'
 
 import Loader from '../../loader/Loader'
 import RecipeCard from '../recipe-card/RecipeCard'
@@ -11,15 +11,12 @@ import { getAllRecipes } from '../../../services/recipeService'
 import './RecipeList.css'
 
 export default function RecipeList() {
-    const { loader, setNewLoader } = useContext(LoadingContext)
+    const { loader, setNewLoader } = useLoader()
     let [allRecipes, setAllRecipes] = useState([]);
     useEffect(() => {
-        setNewLoader()
         getAllRecipes().then(recipes => {
             setAllRecipes(recipes)
-            setTimeout(()=>{
-                setNewLoader()
-            },25)
+            setNewLoader()    
         })
 
     }, [])

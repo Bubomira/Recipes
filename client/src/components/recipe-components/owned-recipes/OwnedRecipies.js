@@ -1,7 +1,7 @@
 import { useState, useEffect, useContext } from 'react'
 import { useParams,useNavigate } from 'react-router-dom';
 
-import LoadingContext from '../../../contexts/LoadingContext'
+import useLoader from '../../../hooks/useLoader'
 
 import { getOwnedRecipes } from '../../../services/userService'
 
@@ -12,11 +12,10 @@ import Loader from '../../loader/Loader';
 
 export default function OwnedRecipies() {
     const navigate = useNavigate()
-    const { loader, setNewLoader } = useContext(LoadingContext)
+    const [ loader, setNewLoader ] = useLoader()
     const { userId } = useParams()
     let [userOwnedRecipes, setUserOwnedRecipes] = useState([]);
     useEffect(() => {
-        setNewLoader()
         getOwnedRecipes(userId).then(ownedRecipes => {
             setUserOwnedRecipes(ownedRecipes)
                 setNewLoader()   
