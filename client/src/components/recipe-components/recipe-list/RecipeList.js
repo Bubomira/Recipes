@@ -11,7 +11,7 @@ import { getAllRecipes } from '../../../services/recipeService'
 import './RecipeList.css'
 
 export default function RecipeList() {
-    const { loader, setNewLoader } = useLoader()
+    const [ loader, setNewLoader ] = useLoader()
     let [allRecipes, setAllRecipes] = useState([]);
     useEffect(() => {
         getAllRecipes().then(recipes => {

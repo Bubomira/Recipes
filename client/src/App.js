@@ -6,7 +6,7 @@ import { RecipeProvider } from './contexts/RecipeContext'
 import Register from './components/auth-components/register/Register'
 import Login from './components/auth-components/login/Login'
 import Logout from './components/auth-components/logout/Logout'
-import Navigation from './components/Navigation'
+import Navigation from './components/navigation/Navigation'
 import Details from './components/recipe-components/recipe-details/Details'
 import RecipeList from './components/recipe-components/recipe-list/RecipeList'
 import CreateRecipe from './components/recipe-components/recipe-create/CreateRecipe'
@@ -22,8 +22,7 @@ import GuestGuard from './components/guards/guest-guard/GuestGuard'
 
 
 function App() {
- 
-    return (
+   return (
         <>
                 <AuthProvider>
                     <RecipeProvider>
