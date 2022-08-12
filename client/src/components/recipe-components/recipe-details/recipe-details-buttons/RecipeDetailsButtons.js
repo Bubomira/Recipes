@@ -22,13 +22,15 @@ export default function RecipeDetailsButtons({ isLiked, isOwned, id,likes }) {
         likeRecipe(id).then(()=>{
             addLikeToRecipe()
         }).catch(err=>{
-            console.log(err)
+            navigate('/oops')
         })
     }
     const dislikeRecipeHandler=()=>{
             dislikeRecipe(id).then(()=>{
                 addDislikeToRecipe()
-     })
+     }).catch(err=>{
+        navigate('/oops')
+    })
 
     }
     if (isLiked == null || isOwned == null) {

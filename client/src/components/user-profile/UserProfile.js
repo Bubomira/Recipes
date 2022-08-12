@@ -1,11 +1,12 @@
 import { useState,useEffect } from 'react'
-import { Link } from 'react-router-dom'
+import { Link,useNavigate } from 'react-router-dom'
 
 import { getProfile } from '../../services/userService'
 
 import './UserProfile.css'
 
 export default function UserProfile() {
+    const navigate = useNavigate()
     let [profile,setProfile] = useState({
         username:'',
         email:''
@@ -14,6 +15,8 @@ export default function UserProfile() {
     useEffect(()=>{
         getProfile().then(profileData=>{
             setProfile(profileData)
+        }).catch(err=>{
+            navigate('/oops')
         })
 
     },[])

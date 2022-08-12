@@ -41,7 +41,7 @@ export default function EditRecipe() {
         editRecipe(recipeInfo.recipe._id, values).then(() => {
             navigate(`/details/${recipeInfo.recipe._id}`)
         }).catch(()=>{
-            navigate('/404')
+            navigate('/oops')
         })
     }
 

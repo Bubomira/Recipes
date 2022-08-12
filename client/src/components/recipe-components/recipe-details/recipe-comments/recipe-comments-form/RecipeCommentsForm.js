@@ -1,4 +1,5 @@
 import {useState,useContext} from 'react'
+import {useNavigate } from 'react-router-dom'
 
 import {RecipeContext} from '../../../../../contexts/RecipeContext'
 import {AuthContext} from '../../../../../contexts/AuthContext'
@@ -8,6 +9,7 @@ import {postComment} from '../../../../../services/commentService'
 import './RecipeCommentsForm.css'
 
 export default function RecipeCommentsForm(){
+  const navigate = useNavigate()
   const{recipeInfo,addComment} = useContext(RecipeContext)
   const {user} = useContext(AuthContext)
   let [content,setContent ] =useState('')
@@ -21,7 +23,9 @@ export default function RecipeCommentsForm(){
     .then(comment=>{
       setContent(oldContent=>'')
       addComment(comment) 
-    })
+    }).catch(err=>{
+      navigate('/oops')
+  })
     
   }
     return(

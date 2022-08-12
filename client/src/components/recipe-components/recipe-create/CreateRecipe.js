@@ -29,7 +29,7 @@ export default function CreateRecipe() {
         createRecipe(values).then(() => {
             navigate('/recipeCatalog')
         }).catch(()=>{
-            navigate('/404')
+            navigate('/oops')
         })
     }
 
